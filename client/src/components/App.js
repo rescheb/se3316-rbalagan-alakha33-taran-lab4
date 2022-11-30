@@ -5,8 +5,8 @@ import { AuthProvider } from "../contexts/AuthContext"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
-
- 
+import Dashboard from "./Dashboard"
+import Login from "./Login"
  
 function App(){
 
@@ -44,8 +44,9 @@ useEffect(() => {
       <Router>
         <AuthProvider>
           <Switch>
-            <Route exact path = "/" components = {Dashboard}/>
+            <Route exact path ="/" component = {Dashboard}/>
             <Route path = "/signup" component = {Signup} />
+            <Route path = "/login" component = {Login} />
           </Switch>
         </AuthProvider>
       </Router>
