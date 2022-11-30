@@ -30,19 +30,23 @@ useEffect(() => {
         })}
     </div>
 
-  <AuthProvider>
+  
+
     <Container className = "d-flex align-items-center justify-content-center"
    style = {{minHeight: "100vh"}}
+   >
      <div className = "w-100" style = {{maxWidth: "500px"}}>
       <Router>
         <AuthProvider>
           <Switch>
+            <Route exact path = "/" components = {Dashboard}/>
             <Route path = "/signup" component = {Signup} />
           </Switch>
         </AuthProvider>
       </Router>
  </div>
  </Container>
+ </div>
  )
 }
  
