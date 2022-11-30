@@ -3,7 +3,7 @@ import Signup from "./SignUp"
 import {Container} from 'react-bootstrap'
 import { AuthProvider } from "../contexts/AuthContext"
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 
  
@@ -24,9 +24,14 @@ useEffect(() => {
 
  return (
   <div>
+  
     <div className="Playlists">
       {listOfPlaylists.map((value, key) => {
-        return <div>{value.title}</div>
+        return 
+        <div className="Playlist">
+          <div className="title">{value.title}</div>
+          <div className="song">{value.song}</div>
+          </div>
         })}
     </div>
 
