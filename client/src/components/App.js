@@ -4,6 +4,7 @@ import {Container} from 'react-bootstrap'
 import { AuthProvider } from "../contexts/AuthContext"
 import axios from "axios";
 import { useEffect } from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
  
  
 function App(){
@@ -18,16 +19,20 @@ useEffect(() => {
 }, [])
 
  return (
-
- <AuthProvider>
  <Container className = "d-flex align-items-center justify-content-center"
    style = {{minHeight: "100vh"}}
    >
      <div className = "w-100" style = {{maxWidth: "500px"}}>
- <Signup />
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <Route path = "/signup" component = {Signup} />
+          </Switch>
+        </AuthProvider>
+      </Router>
  </div>
  </Container>
- </AuthProvider>
+
  )
 }
  
