@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) =>{
             allowNull: false
         },
 
+        ispublic: {
+            type: DataTypes.BOOLEAN,
+            allowNull:false
+        }
+
 
 
     } );
