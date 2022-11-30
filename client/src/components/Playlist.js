@@ -12,10 +12,35 @@ useEffect(() => {
   axios.get("http://localhost:9000/playlist").then((response) =>{
     setListOfPlaylists(response.data)
     console.log(response.data);
+    console.log(listOfPlaylists);
 
   })
 
 }, [])
+
+
+let recentPlaylists = [[]];
+let h=1;
+let l;
+
+while(h<=10)
+{
+    l=response.data[0];
+    for(let x=0; x<response.data.length;x++)
+    {
+        
+        if(new Date(l.updatedAt) < new Date(response.data[x]))
+        {
+            l=response.data[x];
+        }
+        else if(+(new Date(l.updatedAt)) === +(new Date(response.data[x])))
+        {
+            
+        }
+    
+    }
+}
+
 
 return(
 <div className="Playlists">
