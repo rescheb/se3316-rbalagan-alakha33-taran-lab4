@@ -46,13 +46,13 @@ while(recentPlaylists.length<10)
         }
     }
 
-    // for(let p=0;p<data.length;p++)
-    // {
-    //     if(l.username===data[p].username && l.title === data[p].title)
-    //     {
-    //         data.remove(data[p]);
-    //     }
-    // }
+    for(let p=0;p<data.length;p++)
+    {
+        if(l.username===data[p].username && l.title === data[p].title)
+        {
+            data.splice(p,1);
+        }
+    }
     recentPlaylists.push(l);
 
 }
