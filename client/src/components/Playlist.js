@@ -13,12 +13,7 @@ useEffect(() => {
 
   axios.get("http://localhost:9000/playlist").then((response) =>{
     setListOfPlaylists(response.data)
-    
-   
-    
   })
-
-
 }, [])
 
 data = listOfPlaylists;
@@ -56,12 +51,15 @@ while(recentPlaylists.length<10)
     recentPlaylists.push(l);
 
 }
+let test = recentPlaylists;
+console.log(test[0].title);
 
-console.log(recentPlaylists);
 
 return(
 <div className="Playlists">
-      {listOfPlaylists.map((value, key) => {
+
+
+      {/* {listOfPlaylists.map((value, key) => {
         return (  
         <div className="Playlist">
         <div className="title">{value.title}</div>
@@ -69,7 +67,7 @@ return(
         </div>
         ); 
       
-        })}
+        })} */}
     </div>
 );
 }
