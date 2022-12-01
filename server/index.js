@@ -17,3 +17,5 @@ db.sequelize.sync().then(()=> {
     });
 })
 
+
+
