@@ -34,7 +34,7 @@ function App() {
                 <Route path="/forgot-password" component={ForgotPassword} />
                 <Route path="/UnauthenticatedUser" component={UnauthenticatedUser}/>
                 <Route path="/frontend" component={Frontend} />
-                <Route path = "/dcmanotice" component = {DcmaNotice}/>
+                <Route path = "/dmcanotice" component = {DcmaNotice}/>
               </Switch>
             </AuthProvider>
           </Router>
