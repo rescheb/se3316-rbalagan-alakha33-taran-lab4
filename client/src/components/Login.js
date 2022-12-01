@@ -29,6 +29,7 @@ export default function Login() {
  
  return (
    <>
+   <h5 className = "text-center mb-4">Welcome to the application, once you log in you will be able to Search, Create, and Delete Playlists!</h5>
        <Card>
            <Card.Body>
                <h2 className = "text-center mb-4">Log In</h2>
