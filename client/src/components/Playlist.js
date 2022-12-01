@@ -51,23 +51,15 @@ while(recentPlaylists.length<10)
     recentPlaylists.push(l);
 
 }
-let test = recentPlaylists;
-console.log(test[0].title);
 
-
+console.log(recentPlaylists[0]);
+console.log(recentPlaylists[0].title);
 return(
 <div className="Playlists">
-
-
-      {/* {listOfPlaylists.map((value, key) => {
-        return (  
-        <div className="Playlist">
-        <div className="title">{value.title}</div>
-        <div className="song">{value.song}</div>
-        </div>
-        ); 
-      
-        })} */}
-    </div>
+    {listOfPlaylists.map((value, key) => {
+    return<div>{value.title}</div>;
+    })}
+</div>
 );
+
 }
