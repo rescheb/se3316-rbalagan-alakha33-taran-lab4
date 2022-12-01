@@ -9,6 +9,7 @@ import Login from "./Login"
 import Playlist from "./Playlist"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
+import UnauthenticatedUser from "./UnauthenticatedUser"
  
 function App(){
  return (
@@ -25,6 +26,7 @@ function App(){
             <Route path = "/login" component = {Login} />
             <Route path = "/playlist" component = {Playlist} />
             <Route path = "/forgot-password" component = {ForgotPassword} />
+            <Route path = "/UnauthenticatedUser" component= {UnauthenticatedUser} />
           </Switch>
         </AuthProvider>
       </Router>
