@@ -37,13 +37,13 @@ export default function Playlist()
 
                 <div>
                     <ul>
-                        <li> {playlist.id} </li>
-                        <li> {playlist.title} </li>
+                        <li> {playlist.title+" by: "+playlist.username+" #tracks: "+ playlist.song.split(",").length} </li>
+                        {/* <li> {playlist.title} </li>
                         <li> {playlist.song} </li>
                         <li> {playlist.username} </li>
                         <li> {playlist.ispublic} </li>
                         <li> {playlist.createdAt} </li>
-                        <li> {playlist.updatedAt} </li>
+                        <li> {playlist.updatedAt} </li> */}
                     </ul>
                     <br></br>
 
