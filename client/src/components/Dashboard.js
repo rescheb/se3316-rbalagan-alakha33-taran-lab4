@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
+import DcmaNotice from './DcmaNotice'
 
 export default function Dashboard() {
     const [error,setError] = useState("")
@@ -31,7 +32,11 @@ export default function Dashboard() {
         </Card>
         <div className = "w-100 text-center mt-2">
         <Button variant = "danger"  onClick = {handleLogout}>Log out</Button>
-        
+        <br></br>
+        <div className = "w-100 text-center mt-2">
+          <Link to = "/dcmanotice">DCMA Notice</Link>
+       </div>
+      
        </div>
     </>
   )
