@@ -34,9 +34,9 @@ export default function Dashboard() {
         <Button variant = "danger"  onClick = {handleLogout}>Log out</Button>
         <br></br>
         <div className = "w-100 text-center mt-2">
-          <Link to = "/dcmanotice">DCMA Notice</Link>
+          <Link to = "/dmcanotice">DCMA Notice</Link>
        </div>
-      
+        
        </div>
     </>
   )
