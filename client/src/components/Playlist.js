@@ -11,20 +11,24 @@ export default function Playlist()
     const [recentPlaylists, setRecentPlaylists] = useState([]);
     useEffect(() => {
         fetch("http://localhost:9000/playlist/recentPlaylists", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
-            .then(res => res.json)
+            .then(res => res.json())
             .then(data => {
                 setRecentPlaylists(data);
-                console.log(data);
+                console.log(JSON.stringify(data));
             })
             .catch(err => { console.log(err) })
 
+        // fetch('"http://localhost:9000/playlist/recentPlaylists')
+        // .then(function(response){
+        //     response.json().then(function(data){
+        //         console.log(data);
+        //     });
+        // }).catch(function(error){
+        //     console.log('Fetch Error:', error);
+        // });
+
 
     }, []);
-
-
-
-
-
 
     return (
         <div >
@@ -41,6 +45,7 @@ export default function Playlist()
                         <li> {playlist.createdAt} </li>
                         <li> {playlist.updatedAt} </li>
                     </ul>
+                    <br></br>
 
                 </div>
             ) : null}

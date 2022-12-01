@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { playlists } = require("../models");
+const db = require('../database.js');
 
 
 router.get('/', async (req, res)=> {
