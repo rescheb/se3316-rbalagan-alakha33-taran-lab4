@@ -43,6 +43,14 @@ export default function Form() {
         value={formData.artistForm}
       />
       <button>Submit</button>
+      <input
+        type="text"
+        placeholder="Search by Album Name"
+        onChange={handleChange}
+        name="albumForm"
+        value={formData.albumForm}
+      />
+      <button>Submit</button>
     </form>
   );
 }
