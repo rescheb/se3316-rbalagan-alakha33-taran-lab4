@@ -10,6 +10,7 @@ import Playlist from "./Playlist";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UnauthenticatedUser from "./UnauthenticatedUser";
+import Frontend from "./Frontend";
 import AuthenticatedUser from "./AuthenticatedUser";
 
 //setting up the login functionality
@@ -30,9 +31,11 @@ function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />
                 <Route path="/forgot-password" component={ForgotPassword} />
-                <Route path = "/UnauthenticatedUser" component={UnauthenticatedUser}/>
-
-                
+                <Route
+                  path="/UnauthenticatedUser"
+                  component={UnauthenticatedUser}
+                />
+                <Route path="/frontend" component={Frontend} />
               </Switch>
             </AuthProvider>
           </Router>
