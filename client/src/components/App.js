@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UnauthenticatedUser from "./UnauthenticatedUser";
 import Frontend from "./Frontend";
+import AuthenticatedUser from "./AuthenticatedUser";
 
 //setting up the login functionality
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <AuthProvider>
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
+                <PrivateRoute  path="/AuthenticatedUser" component={AuthenticatedUser} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />
