@@ -17,17 +17,6 @@ export default function Playlist()
                 console.log(JSON.stringify(data));
             })
             .catch(err => { console.log(err) })
-
-        // fetch('"http://localhost:9000/playlist/recentPlaylists')
-        // .then(function(response){
-        //     response.json().then(function(data){
-        //         console.log(data);
-        //     });
-        // }).catch(function(error){
-        //     console.log('Fetch Error:', error);
-        // });
-
-
     }, []);
 
     return (

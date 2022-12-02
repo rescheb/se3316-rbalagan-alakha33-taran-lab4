@@ -13,6 +13,7 @@ import UnauthenticatedUser from "./UnauthenticatedUser";
 import Frontend from "./Frontend";
 import AuthenticatedUser from "./AuthenticatedUser";
 import DcmaNotice from "./DcmaNotice";
+import privatePlaylist from "./privatePlaylist";
 
 //setting up the login functionality
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/UnauthenticatedUser" component={UnauthenticatedUser}/>
                 <Route path="/frontend" component={Frontend} />
                 <Route path = "/dmcanotice" component = {DcmaNotice}/>
+                <Route path = "/privatePlaylist" component = {privatePlaylist}/>
               </Switch>
             </AuthProvider>
           </Router>

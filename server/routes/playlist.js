@@ -18,6 +18,20 @@ router.post('/',async (req,res)=> {
 });
 
 
+router.post('/playlist', (req,res) => {
+
+    db.query('INSERT INTO playlists (title, song, username, ispublic) VALUES ("test1","testgf","esf",true)', (err, data) => {
+     console.log(data);
+     if(err != null){
+        res.json(err)
+     }
+     else{
+         res.json(data)
+     }})
+ }
+ );
+
+
 router.get('/recentPlaylists',(req,res) => {
     db.query('SELECT * FROM playlists ORDER BY updatedAt DESC LIMIT 10', (err, data) => {
         console.log(data);
