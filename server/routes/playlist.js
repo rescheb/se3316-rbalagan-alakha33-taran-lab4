@@ -7,12 +7,34 @@ router.post('/playlist', (req,res) => {
     const db = sql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'root',
+        password: 'Yoyomama_123',
         database: 'musicdb'
     });
 
     console.log(req.body);
     db.query("INSERT INTO playlists (title, song, username, ispublic) VALUES (?, ?, ?, ?);", [req.body.title, req.body.songs, req.body.username, req.body.public], (err, data) => {
+
+        console.log(err);
+     if(err != null){
+        res.json(err)
+     }
+     else{
+         res.json(data)
+     }})
+ }
+ );
+
+ router.post('/logininfo', (req,res) => {
+
+    const db = sql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'Yoyomama_123',
+        database: 'musicdb'
+    });
+
+    console.log(req.body);
+    db.query("INSERT INTO userinfo (email, password, is_Admin) VALUES (?, ?, ?);", [req.body.email, req.body.password, req.body.is_Admin], (err, data) => {
 
         console.log(err);
      if(err != null){

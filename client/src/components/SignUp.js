@@ -14,6 +14,15 @@ export default function Signup() {
    const {signup} = useAuth()
    const [error,setError] = useState('')
    const [loading, setLoading] = useState(false)
+
+ 
+
+
+
+const postLoginInfo = () => {
+
+   
+}
  
  
    async function handleSubmit(e){
@@ -25,6 +34,24 @@ export default function Signup() {
            setError("")
            setLoading(true)
            await signup(emailRef.current.value, passwordRef.current.value)
+
+
+           console.log("Entered")
+           fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 0}), headers: new Headers({'Content-Type': 'application/json'})})
+           .then(res => res.json())
+           .then(data => {
+               
+           })
+           .catch(err => {
+               console.log(err)
+           })
+
+
+
+
+
+
+
            sendEmailVerification(auth.currentUser)
        } catch{
            setError ('Failed to create an account')
@@ -56,7 +83,7 @@ export default function Signup() {
                        <Form.Label>Password Confirmation</Form.Label>
                        <Form.Control type = "password" ref = {passwordConfirmRef} required />
                    </Form.Group>
-                   <Button disabled = {loading} className = "w-100 mt-3" type = "submit">Sign Up</Button>
+                   <Button onClick={postLoginInfo}  disabled = {loading} className = "w-100 mt-3" type = "submit">Sign Up</Button>
                </Form>
            </Card.Body>
        </Card>
