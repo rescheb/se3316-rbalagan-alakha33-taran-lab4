@@ -12,7 +12,7 @@ import ForgotPassword from "./ForgotPassword";
 import UnauthenticatedUser from "./UnauthenticatedUser";
 import Frontend from "./Frontend";
 import AuthenticatedUser from "./AuthenticatedUser";
-import DcmaNotice from "./DcmaNotice";
+import DcmaNotice from "./DmcaNotice";
 
 //setting up the login functionality
 function App() {
