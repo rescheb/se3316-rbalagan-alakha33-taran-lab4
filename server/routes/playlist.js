@@ -1,27 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { playlists } = require("../models");
-const db = require('../database.js');
-
-
-router.get('/', async (req, res)=> {
-
-    const listOfPlaylists = await playlists.findAll();
-    res.json(listOfPlaylists);
-
-});
-
-router.post('/',async (req,res)=> {
-    const play = req.body;
-    await playlists.create(play);
-    res.json(play);
-});
-
+const sql = require("mysql2");
 
 router.post('/playlist', (req,res) => {
 
-    db.query('INSERT INTO playlists (title, song, username, ispublic) VALUES ("test1","testgf","esf",true)', (err, data) => {
-     console.log(data);
+    const db = sql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'musicdb'
+    });
+
+    console.log(req.body);
+    db.query("INSERT INTO playlists (title, song, username, ispublic) VALUES (?, ?, ?, ?);", [req.body.title, req.body.songs, req.body.username, req.body.public], (err, data) => {
+
+        console.log(err);
      if(err != null){
         res.json(err)
      }
