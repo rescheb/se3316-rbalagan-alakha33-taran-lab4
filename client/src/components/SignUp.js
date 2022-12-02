@@ -14,6 +14,7 @@ export default function Signup() {
    const {signup} = useAuth()
    const [error,setError] = useState('')
    const [loading, setLoading] = useState(false)
+   let g;
 
  
 
@@ -35,16 +36,51 @@ const postLoginInfo = () => {
            setLoading(true)
            await signup(emailRef.current.value, passwordRef.current.value)
 
-
-           console.log("Entered")
-           fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 0}), headers: new Headers({'Content-Type': 'application/json'})})
+           fetch("http://localhost:9000/playlist/numuser", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
            .then(res => res.json())
            .then(data => {
-               
+    
+               console.log(JSON.stringify(data));
+               console.log(JSON.stringify(data).split(":")[1].split("}")[0]);
+               if(JSON.stringify(data).split(":")[1].split("}")[0]==0)
+               {
+                console.log("Entered")
+                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 1}), headers: new Headers({'Content-Type': 'application/json'})})
+                .then(res => res.json())
+                .then(data => {
+                    
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+    
+               }
+               else
+               {
+                console.log("Entered")
+                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 0}), headers: new Headers({'Content-Type': 'application/json'})})
+                .then(res => res.json())
+                .then(data => {
+                    
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+               }
+
+
+
+
+
            })
-           .catch(err => {
-               console.log(err)
-           })
+           .catch(err => { console.log(err) })
+
+           
+
+     
+
+
+
 
 
 

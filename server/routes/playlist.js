@@ -60,4 +60,25 @@ router.get('/recentPlaylists',(req,res) => {
 
 );
 
+
+const db = sql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Yoyomama_123',
+    database: 'musicdb'
+});
+
+router.get('/numuser',(req,res) => {
+    db.query('SELECT COUNT(email) FROM userinfo', (err, data) => {
+        console.log(data);
+        if(err != null){
+           res.json(err)
+        }
+        else{
+            res.json(data)
+        }})
+    }
+
+);
+
 module.exports = router;
