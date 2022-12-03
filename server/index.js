@@ -29,18 +29,30 @@ db.query(
   (req, res) => {}
 );
 
+// let tracks = [];
+// fetch("http://localhost:9000/playlist/trackinfo", {
+//   method: "GET",
+//   headers: new Headers({ "Content-Type": "application/json" }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => {
+//     tracks.push(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+const csv = require("csv-parser");
 let tracks = [];
-fetch("http://localhost:9000/playlist/trackinfo", {
-  method: "GET",
-  headers: new Headers({ "Content-Type": "application/json" }),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    tracks.push(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const fs = require("fs");
+
+fs.createReadStream("raw_tracks.csv")
+  .pipe(csv({}))
+  .on("data", (data) => tracks.push(data))
+  .on("end", () => {});
+
+router.get("/trackinfo", (req, res) => {
+  res.send(tracks);
+});
 
 // for(let g=0;g<tracks.length;g++)
 // {
