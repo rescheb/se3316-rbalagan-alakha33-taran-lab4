@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Search from "./Search";
 
 
 
 
-export default function Playlist()
-{
+export default function Playlist() {
 
 
     const [recentPlaylists, setRecentPlaylists] = useState([]);
@@ -22,11 +22,11 @@ export default function Playlist()
     return (
         <div >
 
-            {recentPlaylists.length !=0 ? recentPlaylists.map(playlist =>
+            {recentPlaylists.length != 0 ? recentPlaylists.map(playlist =>
 
                 <div>
                     <ul>
-                        <li> {playlist.title+" by: "+playlist.username+" #tracks: "+ playlist.song.split(",").length} </li>
+                        <li> {playlist.title + " by: " + playlist.username + " #tracks: " + playlist.song.split(",").length} </li>
                         {/* <li> {playlist.title} </li>
                         <li> {playlist.song} </li>
                         <li> {playlist.username} </li>
@@ -38,6 +38,13 @@ export default function Playlist()
 
                 </div>
             ) : null}
+
+
+            <Search/>
+
+
+
+
         </div>
     );
 
