@@ -16,6 +16,9 @@ export default function Signup() {
    const [loading, setLoading] = useState(false)
    let g;
 
+   const [username1, setUsername1] = useState('');
+
+
  
 
 
@@ -45,7 +48,8 @@ const postLoginInfo = () => {
                if(JSON.stringify(data).split(":")[1].split("}")[0]==0)
                {
                 console.log("Entered")
-                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 1}), headers: new Headers({'Content-Type': 'application/json'})})
+                console.log(name);
+                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 1, "username": username1}), headers: new Headers({'Content-Type': 'application/json'})})
                 .then(res => res.json())
                 .then(data => {
                     
@@ -58,7 +62,7 @@ const postLoginInfo = () => {
                else
                {
                 console.log("Entered")
-                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 0}), headers: new Headers({'Content-Type': 'application/json'})})
+                fetch("http://" + window.location.hostname + ':9000/playlist/logininfo', {method: "POST", body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value, "is_Admin": 0, "username": username1}), headers: new Headers({'Content-Type': 'application/json'})})
                 .then(res => res.json())
                 .then(data => {
                     
@@ -69,25 +73,8 @@ const postLoginInfo = () => {
                }
 
 
-
-
-
            })
            .catch(err => { console.log(err) })
-
-           
-
-     
-
-
-
-
-
-
-
-
-
-
            sendEmailVerification(auth.currentUser)
        } catch{
            setError ('Failed to create an account')
@@ -105,11 +92,11 @@ const postLoginInfo = () => {
                <Form onSubmit = {handleSubmit}>
                     <Form.Group id = "name">
                        <Form.Label>Name</Form.Label>
-                       <Form.Control type = "name" ref = {name}required />
+                       <Form.Control type = "name" ref = {name}required value={username1} onChange={(e) => setUsername1(e.target.value)} />
                    </Form.Group>
                    <Form.Group id = "email">
                        <Form.Label>Email</Form.Label>
-                       <Form.Control type = "email" ref = {emailRef} required />
+                       <Form.Control type = "email" ref = {emailRef} required  />
                    </Form.Group>
                    <Form.Group id = "password">
                        <Form.Label>Password</Form.Label>

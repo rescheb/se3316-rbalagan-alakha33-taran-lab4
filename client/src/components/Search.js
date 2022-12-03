@@ -5,6 +5,25 @@ import React from 'react'
 
 
 export default function Search() {
+
+    function filterTrackTitle(arr,query)
+    {
+        return arr.filter((el) =>
+            el.track_title.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    }
+
+    function filterArtistName(arr,query)
+{
+    return arr.filter((el) =>
+        el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
+}
+
+
+
+
+
+
+
   return (
     <div>
         

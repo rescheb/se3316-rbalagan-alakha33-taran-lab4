@@ -20,7 +20,7 @@ db.query(
 );
 
 db.query(
-  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL );",
+  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL, username VARCHAR(100) NOT NULL);",
   (req, res) => {}
 );
 

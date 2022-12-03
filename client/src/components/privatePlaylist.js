@@ -1,15 +1,31 @@
 import React from 'react'
 import { useEffect, useState } from "react";
+import {useRef} from 'react'
+import {useAuth} from '../contexts/AuthContext'
+const name = require('./SignUp.js');
 
 export default function PrivatePlaylist() 
 {
+    const{currentUser} = useAuth()
 
-  
+    const [username, setUsername] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:9000/playlist/recentPlaylists", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
+            .then(res => res.json())
+            .then(data => {
+                setRecentPlaylists(data);
+                console.log(JSON.stringify(data));
+            })
+            .catch(err => { console.log(err) })
+    }, []);
+   
+
+
 
 const createPlaylist = () => {
 
     console.log("Entered")
-    fetch("http://" + window.location.hostname + ':9000/playlist/playlist', {method: "POST", body: JSON.stringify({"title": title, "songs": song, "username": "test2", "public": ispublic}), headers: new Headers({'Content-Type': 'application/json'})})
+    fetch("http://" + window.location.hostname + ':9000/playlist/playlist', {method: "POST", body: JSON.stringify({"title": title, "songs": song, "username": currentUser.email, "public": ispublic}), headers: new Headers({'Content-Type': 'application/json'})})
     .then(res => res.json())
     .then(data => {
         

@@ -35,8 +35,8 @@ router.post("/logininfo", (req, res) => {
 
   console.log(req.body);
   db.query(
-    "INSERT INTO userinfo (email, password, is_Admin) VALUES (?, ?, ?);",
-    [req.body.email, req.body.password, req.body.is_Admin],
+    "INSERT INTO userinfo (email, password, is_Admin, username) VALUES (?, ?, ?, ?);",
+    [req.body.email, req.body.password, req.body.is_Admin, req.body.username],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -111,6 +111,19 @@ router.get("/numuser", (req, res) => {
     }
   });
 });
+
+
+router.get("/username", (req, res) => {
+  db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
+    console.log(data);
+    if (err != null) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 
 const csv = require("csv-parser");
 let tracks = [];
