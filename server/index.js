@@ -25,6 +25,40 @@ db.query("CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(10
 
 });
 
+db.query("CREATE TABLE track( track_duration VARCHAR(5),genre VARCHAR(1000),track_name VARCHAR(1000), album_id INT, album_title VARCHAR(1000),  artist_id INT,artist_name VARCHAR(1000),track_id INT NOT NULL )", (req, res) => {
+
+});
+
+let tracks=[];
+fetch("http://localhost:9000/playlist/trackinfo", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
+    .then(res => res.json())
+    .then(data => {
+        tracks.push(data)
+
+    })
+    .catch(err => { console.log(err) })
+
+
+
+
+
+
+
+// for(let g=0;g<tracks.length;g++)
+// {
+//     console.log("Entered")
+//                 fetch("http://" + window.location.hostname + ':9000/playlist/parsedData', {method: "POST", body: JSON.stringify({"track_duration": tracks[g].track_duration, "genre": tracks[g].track_genres, "track_name": tracks[g].track_name ,"album_id=": tracks[g].album_id,"album_title":tracks[g].album_title,"artist_id": tracks[g].artist_id,"artist_name":tracks[g].artist_name,"track_id":tracks[g].track_id}), headers: new Headers({'Content-Type': 'application/json'})})
+//                 .then(res => res.json())
+//                 .then(data => {
+
+//                 })
+//                 .catch(err => {
+//                     console.log(err)
+//                 })
+// }
+
+
+
 
 
 //Routers
@@ -35,14 +69,3 @@ app.use("/playlist", playlistRouter);
 app.listen(9000, () => {
     console.log("Server is running on port 9000");
 });
-
-
-
-
-
-
-
-    
-
-
-
