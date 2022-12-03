@@ -7,7 +7,7 @@ router.post('/playlist', (req,res) => {
     const db = sql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'Yoyomama_123',
+        password: 'root',
         database: 'musicdb'
     });
 
@@ -29,7 +29,7 @@ router.post('/playlist', (req,res) => {
     const db = sql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'Yoyomama_123',
+        password: 'root',
         database: 'musicdb'
     });
 
@@ -64,7 +64,7 @@ router.get('/recentPlaylists',(req,res) => {
 const db = sql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Yoyomama_123',
+    password: 'root',
     database: 'musicdb'
 });
 
@@ -80,5 +80,22 @@ router.get('/numuser',(req,res) => {
     }
 
 );
+
+
+const csv = require('csv-parser');
+let tracks=[]
+const fs = require('fs')
+
+
+fs.createReadStream('raw_tracks.csv')
+    .pipe(csv({}))
+    .on('data',(data) => tracks.push(data))
+    .on('end',()=>{
+    });
+
+    
+    router.get('/trackinfo',(req,res) => {
+        res.send(tracks);
+        });
 
 module.exports = router;
