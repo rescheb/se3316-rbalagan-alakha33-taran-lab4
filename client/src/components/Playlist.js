@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 
 
 
-export default function Playlist()
-{
+export default function Playlist() {
 
 
     const [recentPlaylists, setRecentPlaylists] = useState([]);
@@ -22,11 +21,11 @@ export default function Playlist()
     return (
         <div >
 
-            {recentPlaylists.length !=0 ? recentPlaylists.map(playlist =>
+            {recentPlaylists.length != 0 ? recentPlaylists.map(playlist =>
 
                 <div>
                     <ul>
-                        <li> {playlist.title+" by: "+playlist.username+" #tracks: "+ playlist.song.split(",").length} </li>
+                        <li> {playlist.title + " by: " + playlist.username + " #tracks: " + playlist.song.split(",").length} </li>
                         {/* <li> {playlist.title} </li>
                         <li> {playlist.song} </li>
                         <li> {playlist.username} </li>
@@ -38,6 +37,24 @@ export default function Playlist()
 
                 </div>
             ) : null}
+
+
+            <div className="searchTrackTitle" >
+                <button className="tbtn">Search Title</button>
+                <input type="text" placeholder="Enter track title" />
+            </div>
+
+            <div className="searchGenre" >
+                <button className="gbtn">Search genre</button>
+                <input type="text" placeholder="Enter genre" />
+            </div>
+
+            <div className="searchArtist" >
+                <button className="gbtn">Search Artist</button>
+                <input type="text" placeholder="Enter Artist Name" />
+            </div>
+
+
         </div>
     );
 
