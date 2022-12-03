@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const sql = require('mysql2');
+const router = express.Router();
+
+
 
 app.use(express.json())
 app.use(cors());
@@ -9,7 +12,7 @@ app.use(cors());
 const db = sql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Yoyomama_123',
+    password: 'root',
     database: 'musicdb'
 });
 
@@ -29,11 +32,6 @@ const playlistRouter = require("./routes/playlist");
 app.use("/playlist", playlistRouter);
 
 
-
-
-
-
-
 app.listen(9000, () => {
     console.log("Server is running on port 9000");
 });
@@ -42,6 +40,9 @@ app.listen(9000, () => {
 
 
 
+
+
+    
 
 
 
