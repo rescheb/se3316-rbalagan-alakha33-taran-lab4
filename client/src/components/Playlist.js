@@ -38,13 +38,7 @@ export default function Playlist() {
 
                 </div>
             ) : null}
-
-
             <Search/>
-
-
-
-
         </div>
     );
 

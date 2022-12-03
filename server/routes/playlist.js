@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -29,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -52,7 +52,7 @@ router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -97,7 +97,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "aarish123",
+  password: "root",
   database: "musicdb",
 });
 
