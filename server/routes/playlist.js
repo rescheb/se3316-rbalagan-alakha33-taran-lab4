@@ -82,7 +82,7 @@ router.post("/parsedData", (req, res) => {
 
 router.get("/recentPlaylists", (req, res) => {
   db.query(
-    "SELECT * FROM playlists ORDER BY updatedAt DESC LIMIT 10",
+    "SELECT * FROM playlists WHERE ispublic!=0 ORDER BY updatedAt DESC LIMIT 10",
     (err, data) => {
       console.log(data);
       if (err != null) {
