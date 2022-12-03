@@ -1,48 +1,46 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-const sql = require('mysql2');
+const cors = require("cors");
+const sql = require("mysql2");
 const router = express.Router();
 
-
-
-app.use(express.json())
+app.use(express.json());
 app.use(cors());
 
 const db = sql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'musicdb'
+  host: "localhost",
+  user: "root",
+  password: "aarish123",
+  database: "musicdb",
 });
 
+db.query(
+  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,ispublic BIT NOT NULL,createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
+  (req, res) => {}
+);
 
-db.query("CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,ispublic BIT NOT NULL,createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));", (req, res) => {
+db.query(
+  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL );",
+  (req, res) => {}
+);
 
-});
+db.query(
+  "CREATE TABLE track( track_duration VARCHAR(5),genre VARCHAR(1000),track_name VARCHAR(1000), album_id INT, album_title VARCHAR(1000),  artist_id INT,artist_name VARCHAR(1000),track_id INT NOT NULL )",
+  (req, res) => {}
+);
 
-db.query("CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL );", (req, res) => {
-
-});
-
-db.query("CREATE TABLE track( track_duration VARCHAR(5),genre VARCHAR(1000),track_name VARCHAR(1000), album_id INT, album_title VARCHAR(1000),  artist_id INT,artist_name VARCHAR(1000),track_id INT NOT NULL )", (req, res) => {
-
-});
-
-let tracks=[];
-fetch("http://localhost:9000/playlist/trackinfo", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
-    .then(res => res.json())
-    .then(data => {
-        tracks.push(data)
-
-    })
-    .catch(err => { console.log(err) })
-
-
-
-
-
-
+let tracks = [];
+fetch("http://localhost:9000/playlist/trackinfo", {
+  method: "GET",
+  headers: new Headers({ "Content-Type": "application/json" }),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    tracks.push(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // for(let g=0;g<tracks.length;g++)
 // {
@@ -57,15 +55,10 @@ fetch("http://localhost:9000/playlist/trackinfo", { method: "GET", headers: new 
 //                 })
 // }
 
-
-
-
-
 //Routers
 const playlistRouter = require("./routes/playlist");
 app.use("/playlist", playlistRouter);
 
-
 app.listen(9000, () => {
-    console.log("Server is running on port 9000");
+  console.log("Server is running on port 9000");
 });
