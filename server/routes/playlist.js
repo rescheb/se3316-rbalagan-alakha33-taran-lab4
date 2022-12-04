@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -29,14 +29,14 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
   console.log(req.body);
   db.query(
-    "INSERT INTO userinfo (email, password, is_Admin) VALUES (?, ?, ?);",
-    [req.body.email, req.body.password, req.body.is_Admin],
+    "INSERT INTO userinfo (email, password, is_Admin, username) VALUES (?, ?, ?, ?);",
+    [req.body.email, req.body.password, req.body.is_Admin, req.body.username],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -48,11 +48,36 @@ router.post("/logininfo", (req, res) => {
   );
 });
 
+router.post("/currentuser", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query(
+    "INSERT INTO currentuser (username) VALUES (?);",
+    [req.body.username],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -82,7 +107,7 @@ router.post("/parsedData", (req, res) => {
 
 router.get("/recentPlaylists", (req, res) => {
   db.query(
-    "SELECT * FROM playlists ORDER BY updatedAt DESC LIMIT 10",
+    "SELECT * FROM playlists WHERE ispublic!=0 ORDER BY updatedAt DESC LIMIT 10",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -97,7 +122,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "aarish123",
+  password: "root",
   database: "musicdb",
 });
 
@@ -111,6 +136,51 @@ router.get("/numuser", (req, res) => {
     }
   });
 });
+
+
+router.get("/currentuser1", (req, res) => {
+  db.query(
+    "SELECT * FROM currentuser ORDER BY time DESC LIMIT 1",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+router.get("/emailusername", (req, res) => {
+  db.query("SELECT username FROM userinfo WHERE email="+req.query.name1, (err, data) => {
+    console.log(data);
+    if (err != null) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
+
+
+
+router.get("/username", (req, res) => {
+  db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
+    console.log(data);
+    if (err != null) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 
 const csv = require("csv-parser");
 let tracks = [];

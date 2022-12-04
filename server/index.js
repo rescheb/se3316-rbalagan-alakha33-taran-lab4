@@ -10,17 +10,17 @@ app.use(cors());
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "aarish123",
+  password: "root",
   database: "musicdb",
 });
 
 db.query(
-  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,ispublic BIT NOT NULL,createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
+  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,ispublic BOOLEAN NOT NULL,createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
   (req, res) => {}
 );
 
 db.query(
-  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL );",
+  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL, username VARCHAR(100) NOT NULL);",
   (req, res) => {}
 );
 
@@ -29,18 +29,37 @@ db.query(
   (req, res) => {}
 );
 
+db.query
+(
+    "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    (req, res) => {}
+);
+
+
+// let tracks = [];
+// fetch("http://localhost:9000/playlist/trackinfo", {
+//   method: "GET",
+//   headers: new Headers({ "Content-Type": "application/json" }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => {
+//     tracks.push(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+const csv = require("csv-parser");
 let tracks = [];
-fetch("http://localhost:9000/playlist/trackinfo", {
-  method: "GET",
-  headers: new Headers({ "Content-Type": "application/json" }),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    tracks.push(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const fs = require("fs");
+
+fs.createReadStream("raw_tracks.csv")
+  .pipe(csv({}))
+  .on("data", (data) => tracks.push(data))
+  .on("end", () => {});
+
+router.get("/trackinfo", (req, res) => {
+  res.send(tracks);
+});
 
 // for(let g=0;g<tracks.length;g++)
 // {
