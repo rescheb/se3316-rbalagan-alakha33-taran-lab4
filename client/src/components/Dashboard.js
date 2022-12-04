@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
@@ -8,6 +8,7 @@ export default function Dashboard() {
     const [error,setError] = useState("")
     const{currentUser, logout } = useAuth()
     const history = useHistory()
+
     
 
     async function handleLogout(){
