@@ -10,6 +10,19 @@ export default function Dashboard() {
     const history = useHistory()
 
     
+    // console.log("Entered")
+    // fetch("http://" + window.location.hostname + ':9000/playlist/currentuser', {method: "POST", body: JSON.stringify({"username": currentUser.name}), headers: new Headers({'Content-Type': 'application/json'})})
+    // .then(res => res.json())
+    // .then(data => {
+        
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
+
+
+
+
 
     async function handleLogout(){
         setError('')

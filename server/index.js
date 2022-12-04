@@ -20,7 +20,7 @@ db.query(
 );
 
 db.query(
-  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL );",
+  "CREATE TABLE userinfo(email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL,is_admin BOOLEAN NOT NULL, username VARCHAR(100) NOT NULL);",
   (req, res) => {}
 );
 
@@ -28,6 +28,13 @@ db.query(
   "CREATE TABLE track( track_duration VARCHAR(5),genre VARCHAR(1000),track_name VARCHAR(1000), album_id INT, album_title VARCHAR(1000),  artist_id INT,artist_name VARCHAR(1000),track_id INT NOT NULL )",
   (req, res) => {}
 );
+
+db.query
+(
+    "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    (req, res) => {}
+);
+
 
 // let tracks = [];
 // fetch("http://localhost:9000/playlist/trackinfo", {
