@@ -29,6 +29,13 @@ db.query(
   (req, res) => {}
 );
 
+db.query
+(
+    "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    (req, res) => {}
+);
+
+
 // let tracks = [];
 // fetch("http://localhost:9000/playlist/trackinfo", {
 //   method: "GET",

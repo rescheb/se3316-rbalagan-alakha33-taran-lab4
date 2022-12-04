@@ -48,6 +48,31 @@ router.post("/logininfo", (req, res) => {
   );
 });
 
+router.post("/currentuser", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query(
+    "INSERT INTO currentuser (username) VALUES (?);",
+    [req.body.username],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
@@ -111,6 +136,38 @@ router.get("/numuser", (req, res) => {
     }
   });
 });
+
+
+router.get("/currentuser1", (req, res) => {
+  db.query(
+    "SELECT * FROM currentuser ORDER BY time DESC LIMIT 1",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+router.get("/emailusername", (req, res) => {
+  db.query("SELECT username FROM userinfo WHERE email="+req.query.name1, (err, data) => {
+    console.log(data);
+    if (err != null) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
+
 
 
 router.get("/username", (req, res) => {
