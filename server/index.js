@@ -57,6 +57,12 @@ fs.createReadStream("raw_tracks.csv")
   .on("data", (data) => tracks.push(data))
   .on("end", () => {});
 
+
+
+
+
+
+  
 router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });

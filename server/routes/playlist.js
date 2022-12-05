@@ -195,4 +195,38 @@ router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
 
+
+router.get('/filterTrack',(req, res) =>{
+  console.log('GET request for ${req.url}');
+  let searchedTracks = req.query.trackName;
+  res.send(filterTrackTitle(tracks,searchedTracks));
+});
+
+function filterTrackTitle(arr, query) {
+  return arr.filter((el) =>
+      el.track_title.toString().toLowerCase().includes(query.toString().toLowerCase()));
+}
+
+router.get('/filterGenre',(req, res) =>{
+  console.log('GET request for ${req.url}');
+  let searchedGenre = req.query.genre;
+  res.send(filterGenre(tracks,searchedGenre));
+});
+
+function filterGenre(arr, query) {
+  return arr.filter((el) =>
+      el.track_genres.toString().toLowerCase().includes(query.toString().toLowerCase()));
+}
+
+router.get('/filterArtistName',(req, res) =>{
+  console.log('GET request for ${req.url}');
+  let searchedName = req.query.name;
+  res.send(filterArtistName(tracks,searchedName));
+});
+
+function filterArtistName(arr, query) {
+  return arr.filter((el) =>
+      el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
+}
+
 module.exports = router;
