@@ -156,7 +156,8 @@ router.get("/currentuser1", (req, res) => {
 
 
 router.get("/emailusername", (req, res) => {
-  db.query("SELECT username FROM userinfo WHERE email="+req.query.name1, (err, data) => {
+  let h=req.query.name1
+  db.query("SELECT username FROM userinfo WHERE email="+"\'"+h+"\'", (err, data) => {
     console.log(data);
     if (err != null) {
       res.json(err);
@@ -228,5 +229,7 @@ function filterArtistName(arr, query) {
   return arr.filter((el) =>
       el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
 }
+
+
 
 module.exports = router;
