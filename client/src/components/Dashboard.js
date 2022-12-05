@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
@@ -8,6 +8,7 @@ export default function Dashboard() {
     const [error,setError] = useState("")
     const{currentUser, logout } = useAuth()
     const history = useHistory()
+
     
     // console.log("Entered")
     // fetch("http://" + window.location.hostname + ':9000/playlist/currentuser', {method: "POST", body: JSON.stringify({"username": currentUser.name}), headers: new Headers({'Content-Type': 'application/json'})})

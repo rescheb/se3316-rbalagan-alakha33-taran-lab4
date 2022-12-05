@@ -14,6 +14,8 @@ export default function Signup() {
    const {signup} = useAuth()
    const [error,setError] = useState('')
    const [loading, setLoading] = useState(false)
+   const [message,setMessage] = useState('')
+   
    let g;
 
    const [username1, setUsername1] = useState('');
@@ -35,9 +37,11 @@ const postLoginInfo = () => {
            return setError('Passwords do not match')
        }
        try{
+           setMessage("")
            setError("")
            setLoading(true)
            await signup(emailRef.current.value, passwordRef.current.value)
+           setMessage("Check your inbox for further instructions")
 
            fetch("http://localhost:9000/playlist/numuser", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
            .then(res => res.json())
