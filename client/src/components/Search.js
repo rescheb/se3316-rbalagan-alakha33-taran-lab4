@@ -8,41 +8,8 @@ import axios from 'axios';
 
 export default function Search() {
 
-    
 
-    // function filterTrackTitle(arr, query) {
-    //     return arr.filter((el) =>
-    //         el.track_title.toString().toLowerCase().includes(query.toString().toLowerCase()));
-    // }
-
-    // function filterArtistName(arr, query) {
-    //     return arr.filter((el) =>
-    //         el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
-    // }
-
-    // function filterGenre(arr, query) {
-    //     return arr.filter((el) =>
-    //         el.track_genres.toString().toLowerCase().includes(query.toString().toLowerCase()));
-    // }
-
-    let result = []
-    function TrackTitleClick(title)
-    {
-       // const [trackInfo, setTrackInfo] = useState([]);
-        // useEffect(() => {
-        //     fetch("http://localhost:9000/playlist/filterTrack?trackName="+title, { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             result=data;
-        //             console.log(JSON.stringify(data));
-        //         })
-        //         .catch(err => { console.log(err) })
-        // }, []);    
-
-        // console.log(result)
-
-        
-    }
+   
 
 
 
@@ -50,8 +17,7 @@ export default function Search() {
 
     
         const [data, setData] = useState({data: []});
-        const [isLoading, setIsLoading] = useState(false);
-        const [err, setErr] = useState('');
+       
       
         const handleClickTrackTitle = async () => {
             fetch("http://localhost:9000/playlist/filterTrack?trackName="+trackTitle, { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
@@ -92,21 +58,12 @@ export default function Search() {
         };
 
 
-    
-
-
-
-    const [trackInfo, setTrackInfo] = useState([]);
+ 
     const [trackTitle, setTrackTitle] = useState('');
     const [genre, setGenre] = useState('');
     const [artist, setArtist] = useState('');
     const [results, setResults] = useState('');
 
-
-
-let gsdf;
-
-gsdf=trackTitle;
 
 
     return (
