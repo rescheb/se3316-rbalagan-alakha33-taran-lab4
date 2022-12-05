@@ -9,37 +9,70 @@ const name = require('./SignUp.js');
 export default function PrivatePlaylist() 
 {
   //currentUser.email.split('@')[0]
-    const{currentUser} = useAuth()
-  
-
+    
+    
+  const{currentUser} = useAuth()
     const [username, setUsername] = useState([]);
-    const createPlaylist = async () => {
+    const [recentPlaylists, setRecentPlaylists] = useState([]);
+
+    
      
-      fetch("http://localhost:9000/playlist/emailusername?name1="+currentUser.email, {
+      
+
+
+   
+
+
+    const viewPlaylists = async () => {
+      
+      fetch("http://localhost:9000/playlist/privatePlaylists?email="+currentUser.email, {
         method: "GET",
         headers: new Headers({ "Content-Type": "application/json" }),
       })
         .then((res) => res.json())
         .then((data) => {
-          setUsername(data);
+          setRecentPlaylists(data);
           console.log(JSON.stringify(data));
         })
         .catch((err) => {
           console.log(err);
         });
+    }
+      
+
+  
+
+  
     
-     
     
-        console.log("Entered")
-        fetch("http://" + window.location.hostname + ':9000/playlist/playlist', {method: "POST", body: JSON.stringify({"title": title, "songs": song, "username": username[0].username, "public": ispublic}), headers: new Headers({'Content-Type': 'application/json'})})
-        .then(res => res.json())
-        .then(data => {
-            
+    const createPlaylist = async () => {
+      fetch("http://localhost:9000/playlist/emailusername?name1="+currentUser.email, {
+        method: "GET",
+        headers: new Headers({ "Content-Type": "application/json" }),
+      })
+        .then((res) => res.json())
+        .then((data2) => {
+          setUsername(data2);
+          console.log(JSON.stringify(data2));
+
+
+          console.log("Entered")
+          fetch("http://" + window.location.hostname + ':9000/playlist/playlist', {method: "POST", body: JSON.stringify({"title": title, "songs": song, "username": data2[0].username, "email":currentUser.email, "public": ispublic}), headers: new Headers({'Content-Type': 'application/json'})})
+          .then(res => res.json())
+          .then(data => {
+              
+          })
+          .catch(err => {
+              console.log(err)
+          })
+
+
+
         })
-        .catch(err => {
-            console.log(err)
-        })
-    
+        .catch((err) => {
+          console.log(err);
+        });
+
      
 
   };
@@ -48,19 +81,12 @@ export default function PrivatePlaylist()
 
 
 
-const CreatePlaylist = () => {
-
-
-    console.log(ispublic)
-}
 
 const [title, setTitle] = useState('');
 const [song, setSong] = useState('');
 const [ispublic, setIsPublic] = useState('');
 
-const handleChange = () => {
 
-}
 
   return (
     <div>
@@ -71,8 +97,30 @@ const handleChange = () => {
         <br></br>
         <input type="text" placeholder="Enter Songs" required value={song} onChange={(e) => setSong(e.target.value)}/>
         </div>
+        
 
         <Search/>
+
+        <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
+
+
+
+
+
+        {recentPlaylists.length != 0 ? recentPlaylists.map((playlist) => (
+            <div>
+              <ul>
+                <li>
+                  {" "}
+                  {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
+                  
+
+                </li>
+            
+              </ul>
+              <br></br>
+            </div>
+          )): null}
 
     </div>
   )
