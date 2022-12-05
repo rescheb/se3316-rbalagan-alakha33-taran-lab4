@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -29,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -52,7 +52,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -77,7 +77,7 @@ router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -122,7 +122,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "Yoyomama_123",
   database: "musicdb",
 });
 
