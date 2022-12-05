@@ -72,6 +72,29 @@ router.post("/currentuser", (req, res) => {
 });
 
 
+router.post("/editPlaylist", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query("UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
+    [req.body.song, req.body.ispublic, req.body.title, req.body.email],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
 
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
