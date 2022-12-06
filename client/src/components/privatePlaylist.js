@@ -134,19 +134,30 @@ export default function PrivatePlaylist()
 };
 
 
-
+let u=0;
 
 const deletePlaylist = async () => 
 {
-  fetch("http://" + window.location.hostname + ':9000/playlist/deletePlaylist', {method: "POST", body: JSON.stringify({"title": title3, "email":currentUser.email}), headers: new Headers({'Content-Type': 'application/json'})})
-  .then(res => res.json())
-  .then(data => {
-      
-  })
-  .catch(err => {
-      console.log(err)
-  })
+  u++
+  if(u==2)
+  {
+    fetch("http://" + window.location.hostname + ':9000/playlist/deletePlaylist', {method: "POST", body: JSON.stringify({"title": title3, "email":currentUser.email}), headers: new Headers({'Content-Type': 'application/json'})})
+    .then(res => res.json())
+    .then(data => {
+        
+    })
+    .catch(err => {
+        console.log(err)
+    })
+    u=0;
+  }
+ 
   
+}
+
+const cancelDeletePlaylist = async () => 
+{
+  u=0;
 }
 
 
@@ -188,6 +199,8 @@ const [ispublic2, setIsPublic2] = useState('');
 
         <div className="delete">
         <button onClick={deletePlaylist} className="ebtn">Delete Playlist</button>
+        <button onClick={deletePlaylist} className="ebtn">Confirm Delete Playlist</button>
+        <button onClick={cancelDeletePlaylist} className="ebtn">Cancel Delete Playlist</button>
         <input type="text" placeholder="Enter Playlist Name to Delete" required value={title3} onChange={(e) => setTitle3(e.target.value)}/>  
         </div>
 
