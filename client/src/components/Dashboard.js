@@ -20,10 +20,6 @@ export default function Dashboard() {
     //     console.log(err)
     // })
 
-
-
-
-
     async function handleLogout(){
         setError('')
 

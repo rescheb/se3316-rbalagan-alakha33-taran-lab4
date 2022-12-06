@@ -30,7 +30,7 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
                 <PrivateRoute  path="/AuthenticatedUser" component={AuthenticatedUser} />
-                <PrivateRoute path = "/dmcanotice" component = {DcmaNotice}/>
+                <Route path = "/dmcanotice" component = {DcmaNotice}/>
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />
