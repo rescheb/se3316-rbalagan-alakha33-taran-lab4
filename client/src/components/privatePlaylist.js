@@ -136,6 +136,12 @@ export default function PrivatePlaylist()
 
 
 
+const deletePlaylist = async () => {
+
+
+  
+}
+
 
 
 const [title, setTitle] = useState('');

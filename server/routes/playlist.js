@@ -274,7 +274,7 @@ function filterArtistName(arr, query) {
 
 router.get("/Admin", (req, res) => {
   db.query(
-    "SELECT * FROM playlists WHERE ispublic!=0 ORDER BY updatedAt DESC LIMIT 10",
+    "SELECT email FROM musicdb.userinfo WHERE is_Admin =1;",
     (err, data) => {
       console.log(data);
       if (err != null) {

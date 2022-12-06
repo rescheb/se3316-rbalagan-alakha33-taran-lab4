@@ -38,6 +38,7 @@ export default function Dashboard() {
             {error && <Alert variant = "danger">{error}</Alert>}
             <strong>User Name: </strong>{(currentUser.email.split('@')[0])}
             <Link to="/AuthenticatedUser" className = "btn btn-primary w-100 mt-3">Authenticated User</Link>
+            <Link to="/privateplaylist" className = "btn btn-primary w-100 mt-3">Private Playlist</Link>
             </Card.Body>
         </Card>
         <div className = "w-100 text-center mt-2">
