@@ -5,7 +5,7 @@ export default function Admin() {
     const{currentUser} = useAuth()
     const [isAdmin, setIsAdmin] = useState([]);
 
-
+    //red
 
     // useEffect(() => {
     //     if(user){
