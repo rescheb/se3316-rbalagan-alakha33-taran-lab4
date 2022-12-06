@@ -3,10 +3,8 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import parse from "html-react-parser"
-import app from '../firebase'
-
  
-export default function PublicDmca() {
+export default function DmcaNotice() {
     const [text,setText] = useState('')
     return(
         <div className="App">
