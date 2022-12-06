@@ -12,9 +12,10 @@ import ForgotPassword from "./ForgotPassword";
 import UnauthenticatedUser from "./UnauthenticatedUser";
 import Frontend from "./Frontend";
 import AuthenticatedUser from "./AuthenticatedUser";
-import DcmaNotice from "./DmcaNotice";
+import DcmaNotice from "./PublicDmcaNotice";
 import PrivatePlaylist from "./PrivatePlaylist";
 import PublicDmca from "./PublicDmca";
+import DmcaNotice from "./PublicDmcaNotice";
 
 //setting up the login functionality
 function App() {
@@ -30,7 +31,8 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
                 <PrivateRoute  path="/AuthenticatedUser" component={AuthenticatedUser} />
-                <Route path = "/dmcanotice" component = {DcmaNotice}/>
+                <PrivateRoute  path="/privatedmca" component={DmcaNotice} />
+                <Route path = "/dmcanotice" component = {PublicDmca}/>
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />

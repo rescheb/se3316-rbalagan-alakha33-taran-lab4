@@ -16,19 +16,6 @@ export default function DmcaNotice() {
     </div>
     <br></br>
     <strong>To Add on to DMCA Please type below</strong>
-          <CKEditor 
-            editor={ClassicEditor}
-            data={text} 
-            onChange={(event, editor) => {
-             
-              const data = editor.getData()
-              setText(data)
-            
-            }}
-          />
-        </div>
-        <div>
-          <p>{parse(text)}</p>
           
         </div>
       </div>
