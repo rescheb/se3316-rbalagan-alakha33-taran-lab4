@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -29,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -52,7 +52,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -76,7 +76,7 @@ router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -95,12 +95,35 @@ router.post("/editPlaylist", (req, res) => {
 });
 
 
+router.post("/deletePlaylist", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query("DELETE FROM playlists WHERE (title =? && email=?)",
+    [req.body.title, req.body.email],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
 
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -145,7 +168,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "root",
   database: "musicdb",
 });
 
@@ -270,24 +293,6 @@ function filterArtistName(arr, query) {
   return arr.filter((el) =>
       el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
 }
-
-
-router.get("/Admin", (req, res) => {
-  db.query(
-    "SELECT * FROM playlists WHERE ispublic!=0 ORDER BY updatedAt DESC LIMIT 10",
-    (err, data) => {
-      console.log(data);
-      if (err != null) {
-        res.json(err);
-      } else {
-        res.json(data);
-      }
-    }
-  );
-});
-
-
-
 
 
 

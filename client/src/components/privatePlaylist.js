@@ -136,10 +136,24 @@ export default function PrivatePlaylist()
 
 
 
+const deletePlaylist = async () => 
+{
+  fetch("http://" + window.location.hostname + ':9000/playlist/deletePlaylist', {method: "POST", body: JSON.stringify({"title": title3, "email":currentUser.email}), headers: new Headers({'Content-Type': 'application/json'})})
+  .then(res => res.json())
+  .then(data => {
+      
+  })
+  .catch(err => {
+      console.log(err)
+  })
+  
+}
+
 
 
 const [title, setTitle] = useState('');
 const [title2, setTitle2] = useState('');
+const [title3, setTitle3] = useState('');
 const [song, setSong] = useState('');
 const [song2, setSong2] = useState('');
 const [ispublic, setIsPublic] = useState('');
@@ -168,6 +182,13 @@ const [ispublic2, setIsPublic2] = useState('');
         <input type="checkbox" required checked={ispublic2} onChange={(e) => setIsPublic2(e.target.checked)}/>ispublic
 
 
+        </div>
+
+
+
+        <div className="delete">
+        <button onClick={deletePlaylist} className="ebtn">Delete Playlist</button>
+        <input type="text" placeholder="Enter Playlist Name to Delete" required value={title3} onChange={(e) => setTitle3(e.target.value)}/>  
         </div>
 
         <button onClick={viewPlaylists} className="vbtn">View Playlist</button>

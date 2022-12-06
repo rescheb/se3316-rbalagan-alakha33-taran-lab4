@@ -41,32 +41,32 @@ export default function Playlist() {
 
   return (
     <div>
-      <h1>Public Playlist</h1>
-      <div className="playlistSearch">
-        <Search />
+    <h1>Public Playlist</h1>
+    <div className="playlistSearch">
+      <Search />
 
-        {recentPlaylists.length != 0
-          ? recentPlaylists.map((playlist) => (
-            <div>
-              <ul>
-                <li>
-                  {" "}
-                  {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
-                  {setSongs(playlist.song.split(","))}
+      {recentPlaylists.length != 0
+        ? recentPlaylists.map((playlist) => (
+          <div>
+            <ul>
+              <li>
+                {" "}
+                {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
+                {/* {setSongs(playlist.song.split(","))} */}
 
-                </li>
-                {/* <li> {playlist.title} </li>
-                        <li> {playlist.song} </li>
-                        <li> {playlist.username} </li>
-                        <li> {playlist.ispublic} </li>
-                        <li> {playlist.createdAt} </li>
-                        <li> {playlist.updatedAt} </li> */}
-              </ul>
-              <br></br>
-            </div>
-          ))
-          : null}
-      </div>
+              </li>
+              {/* <li> {playlist.title} </li>
+                      <li> {playlist.song} </li>
+                      <li> {playlist.username} </li>
+                      <li> {playlist.ispublic} </li>
+                      <li> {playlist.createdAt} </li>
+                      <li> {playlist.updatedAt} </li> */}
+            </ul>
+            <br></br>
+          </div>
+        ))
+        : null}
     </div>
+  </div>
   );
 }

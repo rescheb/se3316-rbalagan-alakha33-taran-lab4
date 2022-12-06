@@ -35,7 +35,6 @@ function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />
                 <Route path="/forgot-password" component={ForgotPassword} />
-                <Route path="/UnauthenticatedUser" component={UnauthenticatedUser}/>
                 <Route path="/frontend" component={Frontend} />
                 <Route path = "/publicdmca" component = {PublicDmca}/>
                 <Route path = "/privatePlaylist" component = {PrivatePlaylist}/>
