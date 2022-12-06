@@ -3,11 +3,11 @@
 }
 
 .h1 {
-  color: #116466;
+  /* color: #116466; */
 }
 
 * {
-  background: tomato;
+  /* background: tomato;
   background: -webkit-linear-gradient(to right, lightgreen, tomato);
-  background: linear-gradient(to right, lightgreen, #ffdead);
+  background: linear-gradient(to right, lightgreen, #ffdead); */
 }
