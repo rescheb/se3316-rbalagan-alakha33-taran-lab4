@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function Playlist() {
+  
   const [recentPlaylists, setRecentPlaylists] = useState([]);
   useEffect(() => {
     fetch("http://localhost:9000/playlist/recentPlaylists", {
@@ -23,20 +24,19 @@ export default function Playlist() {
   const [songs, setSongs] = useState([]);
 
   const handleSongs = async () => {
-    for(let h=0;h<songs.length;h++)
-    {
+    for (let h = 0; h < songs.length; h++) {
 
     }
     fetch("http://localhost:9000/playlist/filterTrack?trackName=", { method: "GET", headers: new Headers({ 'Content-Type': 'application/json' }) })
-        .then(res => res.json())
-        .then(data => {
-          //  setResults(data);
-            console.log(JSON.stringify(data));
-        })
-        .catch(err => { console.log(err) })
- // console.log(data)
+      .then(res => res.json())
+      .then(data => {
+        //  setResults(data);
+        console.log(JSON.stringify(data));
+      })
+      .catch(err => { console.log(err) })
+    // console.log(data)
 
-};
+  };
 
 
   return (
@@ -47,28 +47,24 @@ export default function Playlist() {
 
         {recentPlaylists.length != 0
           ? recentPlaylists.map((playlist) => (
-              <div>
-                <ul>
-                  <li>
-                    {" "}
-                    {playlist.title +
-                      " by: " +
-                      playlist.username +
-                      " #tracks: " +
-                      playlist.song.split(",").length}{" "}
-                      {setSongs(playlist.song.split(","))}
+            <div>
+              <ul>
+                <li>
+                  {" "}
+                  {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
+                  {setSongs(playlist.song.split(","))}
 
-                  </li>
-                  {/* <li> {playlist.title} </li>
+                </li>
+                {/* <li> {playlist.title} </li>
                         <li> {playlist.song} </li>
                         <li> {playlist.username} </li>
                         <li> {playlist.ispublic} </li>
                         <li> {playlist.createdAt} </li>
                         <li> {playlist.updatedAt} </li> */}
-                </ul>
-                <br></br>
-              </div>
-            ))
+              </ul>
+              <br></br>
+            </div>
+          ))
           : null}
       </div>
     </div>
