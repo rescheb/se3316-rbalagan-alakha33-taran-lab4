@@ -295,5 +295,23 @@ function filterArtistName(arr, query) {
 }
 
 
+router.get("/Admin", (req, res) => {
+  db.query(
+    "SELECT email FROM musicdb.userinfo WHERE is_Admin =1;",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+
 
 module.exports = router;
