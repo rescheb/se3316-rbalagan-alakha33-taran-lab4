@@ -6,20 +6,14 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
   console.log(req.body);
   db.query(
     "INSERT INTO playlists (title, song, username, email, ispublic) VALUES (?, ?, ?, ?, ?);",
-    [
-      req.body.title,
-      req.body.songs,
-      req.body.username,
-      req.body.email,
-      req.body.public,
-    ],
+    [req.body.title, req.body.songs, req.body.username, req.body.email, req.body.public],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -35,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -58,7 +52,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -81,13 +75,12 @@ router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query(
-    "UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
+  db.query("UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
     [req.body.song, req.body.ispublic, req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -104,13 +97,12 @@ router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query(
-    "DELETE FROM playlists WHERE (title =? && email=?)",
+  db.query("DELETE FROM playlists WHERE (title =? && email=?)",
     [req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -127,7 +119,7 @@ router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "aarish123",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -172,7 +164,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "aarish123",
+  password: "Yoyomama_123",
   database: "musicdb",
 });
 
@@ -202,28 +194,20 @@ router.get("/currentuser1", (req, res) => {
 });
 
 router.get("/emailusername", (req, res) => {
-  let h = req.query.name1;
-  db.query(
-    "SELECT username FROM userinfo WHERE email=" + "'" + h + "'",
-    (err, data) => {
+  let h=req.query.name1
+  db.query("SELECT username FROM userinfo WHERE email="+"\'"+h+"\'", (err, data) => {
       console.log(data);
       if (err != null) {
         res.json(err);
       } else {
         res.json(data);
       }
-    }
-  );
+  });
 });
 
 router.get("/privatePlaylists", (req, res) => {
-  let email = req.query.email;
-  db.query(
-    "SELECT * FROM playlists WHERE email=" +
-      "'" +
-      email +
-      "'" +
-      " ORDER BY updatedAt DESC LIMIT 20",
+  let email=req.query.email
+  db.query("SELECT * FROM playlists WHERE email="+"\'"+email+"\'"+" ORDER BY updatedAt DESC LIMIT 20",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -317,5 +301,25 @@ router.get("/Admin", (req, res) => {
     }
   );
 });
+
+router.get("/AdminCheck", (req, res) => {
+  db.query(
+    "SELECT is_Admin FROM musicdb.userinfo WHERE email=?;", [req.query.email],
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+
+
 
 module.exports = router;
