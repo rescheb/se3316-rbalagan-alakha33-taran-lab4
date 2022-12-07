@@ -71,7 +71,6 @@ router.post("/currentuser", (req, res) => {
   );
 });
 
-
 router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
@@ -94,7 +93,6 @@ router.post("/editPlaylist", (req, res) => {
   );
 });
 
-
 router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
@@ -116,8 +114,6 @@ router.post("/deletePlaylist", (req, res) => {
     }
   );
 });
-
-
 
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
@@ -183,7 +179,6 @@ router.get("/numuser", (req, res) => {
   });
 });
 
-
 router.get("/currentuser1", (req, res) => {
   db.query(
     "SELECT * FROM currentuser ORDER BY time DESC LIMIT 1",
@@ -198,20 +193,15 @@ router.get("/currentuser1", (req, res) => {
   );
 });
 
-
-
-
-
-
 router.get("/emailusername", (req, res) => {
   let h=req.query.name1
   db.query("SELECT username FROM userinfo WHERE email="+"\'"+h+"\'", (err, data) => {
-    console.log(data);
-    if (err != null) {
-      res.json(err);
-    } else {
-      res.json(data);
-    }
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
   });
 });
 
@@ -229,12 +219,6 @@ router.get("/privatePlaylists", (req, res) => {
   );
 });
 
-
-
-
-
-
-
 router.get("/username", (req, res) => {
   db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
     console.log(data);
@@ -245,7 +229,6 @@ router.get("/username", (req, res) => {
     }
   });
 });
-
 
 const csv = require("csv-parser");
 let tracks = [];
@@ -260,40 +243,50 @@ router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
 
-
-router.get('/filterTrack',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterTrack", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedTracks = req.query.trackName;
-  res.send(filterTrackTitle(tracks,searchedTracks));
+  res.send(filterTrackTitle(tracks, searchedTracks));
 });
 
 function filterTrackTitle(arr, query) {
   return arr.filter((el) =>
-      el.track_title.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.track_title
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
 
-router.get('/filterGenre',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterGenre", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedGenre = req.query.genre;
-  res.send(filterGenre(tracks,searchedGenre));
+  res.send(filterGenre(tracks, searchedGenre));
 });
 
 function filterGenre(arr, query) {
   return arr.filter((el) =>
-      el.track_genres.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.track_genres
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
 
-router.get('/filterArtistName',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterArtistName", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedName = req.query.name;
-  res.send(filterArtistName(tracks,searchedName));
+  res.send(filterArtistName(tracks, searchedName));
 });
 
 function filterArtistName(arr, query) {
   return arr.filter((el) =>
-      el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.artist_name
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
-
 
 router.get("/Admin", (req, res) => {
   db.query(
