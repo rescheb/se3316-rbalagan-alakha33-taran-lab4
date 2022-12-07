@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -29,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -52,7 +52,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -75,7 +75,7 @@ router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -93,11 +93,34 @@ router.post("/editPlaylist", (req, res) => {
   );
 });
 
+router.post("/playlistDescription", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query("UPDATE playlists SET description=? WHERE (title=? && email=?)",
+    [req.body.description, req.body.title, req.body.email],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
 router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -119,7 +142,7 @@ router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "root",
     database: "musicdb",
   });
 
@@ -164,7 +187,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "root",
   database: "musicdb",
 });
 
@@ -218,6 +241,40 @@ router.get("/privatePlaylists", (req, res) => {
     }
   );
 });
+
+router.get("/playlistNames", (req, res) => {
+  let name=req.query.name
+  db.query("SELECT title FROM playlists WHERE email="+"\'"+name+"\'",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+router.get("/playlistNum", (req, res) => {
+  let name=req.query.name
+  db.query("SELECT COUNT(email) AS num FROM playlists WHERE email="+"\'"+name+"\'",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+
+
 
 router.get("/username", (req, res) => {
   db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
