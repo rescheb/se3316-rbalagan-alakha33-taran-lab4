@@ -6,14 +6,20 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
   db.query(
     "INSERT INTO playlists (title, song, username, email, ispublic) VALUES (?, ?, ?, ?, ?);",
-    [req.body.title, req.body.songs, req.body.username, req.body.email, req.body.public],
+    [
+      req.body.title,
+      req.body.songs,
+      req.body.username,
+      req.body.email,
+      req.body.public,
+    ],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -29,7 +35,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -52,7 +58,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -71,17 +77,17 @@ router.post("/currentuser", (req, res) => {
   );
 });
 
-
 router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
+  db.query(
+    "UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
     [req.body.song, req.body.ispublic, req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -94,17 +100,17 @@ router.post("/editPlaylist", (req, res) => {
   );
 });
 
-
 router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("DELETE FROM playlists WHERE (title =? && email=?)",
+  db.query(
+    "DELETE FROM playlists WHERE (title =? && email=?)",
     [req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -117,13 +123,11 @@ router.post("/deletePlaylist", (req, res) => {
   );
 });
 
-
-
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -168,7 +172,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "aarish123",
   database: "musicdb",
 });
 
@@ -182,7 +186,6 @@ router.get("/numuser", (req, res) => {
     }
   });
 });
-
 
 router.get("/currentuser1", (req, res) => {
   db.query(
@@ -198,26 +201,10 @@ router.get("/currentuser1", (req, res) => {
   );
 });
 
-
-
-
-
-
 router.get("/emailusername", (req, res) => {
-  let h=req.query.name1
-  db.query("SELECT username FROM userinfo WHERE email="+"\'"+h+"\'", (err, data) => {
-    console.log(data);
-    if (err != null) {
-      res.json(err);
-    } else {
-      res.json(data);
-    }
-  });
-});
-
-router.get("/privatePlaylists", (req, res) => {
-  let email=req.query.email
-  db.query("SELECT * FROM playlists WHERE email="+"\'"+email+"\'"+" ORDER BY updatedAt DESC LIMIT 20",
+  let h = req.query.name1;
+  db.query(
+    "SELECT username FROM userinfo WHERE email=" + "'" + h + "'",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -229,11 +216,24 @@ router.get("/privatePlaylists", (req, res) => {
   );
 });
 
-
-
-
-
-
+router.get("/privatePlaylists", (req, res) => {
+  let email = req.query.email;
+  db.query(
+    "SELECT * FROM playlists WHERE email=" +
+      "'" +
+      email +
+      "'" +
+      " ORDER BY updatedAt DESC LIMIT 20",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
 
 router.get("/username", (req, res) => {
   db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
@@ -245,7 +245,6 @@ router.get("/username", (req, res) => {
     }
   });
 });
-
 
 const csv = require("csv-parser");
 let tracks = [];
@@ -260,40 +259,50 @@ router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
 
-
-router.get('/filterTrack',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterTrack", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedTracks = req.query.trackName;
-  res.send(filterTrackTitle(tracks,searchedTracks));
+  res.send(filterTrackTitle(tracks, searchedTracks));
 });
 
 function filterTrackTitle(arr, query) {
   return arr.filter((el) =>
-      el.track_title.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.track_title
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
 
-router.get('/filterGenre',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterGenre", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedGenre = req.query.genre;
-  res.send(filterGenre(tracks,searchedGenre));
+  res.send(filterGenre(tracks, searchedGenre));
 });
 
 function filterGenre(arr, query) {
   return arr.filter((el) =>
-      el.track_genres.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.track_genres
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
 
-router.get('/filterArtistName',(req, res) =>{
-  console.log('GET request for ${req.url}');
+router.get("/filterArtistName", (req, res) => {
+  console.log("GET request for ${req.url}");
   let searchedName = req.query.name;
-  res.send(filterArtistName(tracks,searchedName));
+  res.send(filterArtistName(tracks, searchedName));
 });
 
 function filterArtistName(arr, query) {
   return arr.filter((el) =>
-      el.artist_name.toString().toLowerCase().includes(query.toString().toLowerCase()));
+    el.artist_name
+      .toString()
+      .toLowerCase()
+      .includes(query.toString().toLowerCase())
+  );
 }
-
 
 router.get("/Admin", (req, res) => {
   db.query(
@@ -308,10 +317,5 @@ router.get("/Admin", (req, res) => {
     }
   );
 });
-
-
-
-
-
 
 module.exports = router;
