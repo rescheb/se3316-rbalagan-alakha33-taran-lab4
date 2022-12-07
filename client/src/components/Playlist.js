@@ -46,25 +46,6 @@ export default function Playlist() {
       <div className="playlistSearch">
         <Search />
         <Collapsible />
-        <Collapsible />
-        <Collapsible />
-        {recentPlaylists.length != 0
-          ? recentPlaylists.map((playlist) => (
-              <div className="wrapper">
-                <ul>
-                  <li>
-                    {" "}
-                    {playlist.title +
-                      " by: " +
-                      playlist.username +
-                      " #tracks: " +
-                      playlist.song.split(",").length}{" "}
-                  </li>
-                </ul>
-                <br></br>
-              </div>
-            ))
-          : null}
       </div>
     </div>
   );
