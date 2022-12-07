@@ -24,6 +24,7 @@ function Collapsible(props) {
       {recentPlaylists.length != 0
         ? recentPlaylists.map((playlist) => (
             <div className="playlistSearch">
+              <br></br>
               <button className="toggle" onClick={() => setIsOpen(!isOpen)}>
                 {playlist.title +
                   " by: " +
