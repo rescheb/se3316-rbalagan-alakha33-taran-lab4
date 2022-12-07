@@ -1,11 +1,11 @@
-.Playlist {
-  padding: 20px;
+.leftSearch {
+  background-color: aqua;
+  width: 50%;
+  float: left;
 }
 
-.wrapper {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
+.playlistSearch {
+  background-color: bisque;
+  width: 50%;
+  float: right;
 }

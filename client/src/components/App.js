@@ -17,8 +17,8 @@ import PrivatePlaylist from "./PrivatePlaylist";
 import PublicDmca from "./PublicDmca";
 import DmcaNotice from "./PublicDmcaNotice";
 import Admin from "./Admin";
-import Aup from "./Aup"
-import AdminRoute from "./AdminRoute"
+import Aup from "./Aup";
+import AdminRoute from "./AdminRoute";
 import PrivateDmca from "./PrivateDmca";
 import Options from "./Options";
 
@@ -30,24 +30,36 @@ function App() {
         className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        <div className="w-100" style={{ maxWidth: "500px" }}>
+        <div className="w-100" style={{ maxWidth: "10000px" }}>
           <Router>
             <AuthProvider>
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
-                <PrivateRoute  path="/AuthenticatedUser" component={AuthenticatedUser} />
-                <Route  path="/dmcanotice" component={PublicDmca} />
+                <PrivateRoute
+                  path="/AuthenticatedUser"
+                  component={AuthenticatedUser}
+                />
+                <PrivateRoute path="/privatedmca" component={DmcaNotice} />
+                <Route path="/dmcanotice" component={PublicDmca} />
+                <PrivateRoute
+                  path="/AuthenticatedUser"
+                  component={AuthenticatedUser}
+                />
+                <Route path="/dmcanotice" component={PublicDmca} />
                 {/* <Route path = "/dmcanotice" component = {PublicDmca}/> */}
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/playlist" component={Playlist} />
                 <Route path="/forgot-password" component={ForgotPassword} />
                 <Route path="/frontend" component={Frontend} />
-                <Route path = "/publicdmca" component = {PublicDmca}/>
-                <Route path = "/privatePlaylist" component = {PrivatePlaylist}/>
-                <Route path = "/admin" component = {Admin}/>
-                <Route path = "/aup" component = {Aup}/>
-                <Route path = "/options" component = {Options}/>
+                <Route path="/publicdmca" component={PublicDmca} />
+                <Route path="/privatePlaylist" component={PrivatePlaylist} />
+                <Route path="/admin" component={Admin} />
+                <Route path="/publicdmca" component={PublicDmca} />
+                <Route path="/privatePlaylist" component={PrivatePlaylist} />
+                <Route path="/admin" component={Admin} />
+                <Route path="/aup" component={Aup} />
+                <Route path="/options" component={Options} />
                 {/* <Route path = "privateDmca" ><AdminRoute/></Route> */}
               </Switch>
             </AuthProvider>

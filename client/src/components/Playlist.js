@@ -43,8 +43,12 @@ export default function Playlist() {
   return (
     <div className="playlist">
       <h1>Public Playlist</h1>
-      <div className="playlistSearch">
+      <div className="leftSearch">
         <Search />
+        <br></br>
+      </div>
+      <div className="playlistSearch">
+        <br></br>
         <Collapsible />
       </div>
     </div>
