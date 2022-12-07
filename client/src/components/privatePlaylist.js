@@ -1,230 +1,330 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import {useRef} from 'react'
-import {useAuth} from '../contexts/AuthContext'
+import { useRef } from 'react'
+import { useAuth } from '../contexts/AuthContext'
 import Search from "./Search";
 const name = require('./SignUp.js');
 
 
-export default function PrivatePlaylist() 
-{
+export default function PrivatePlaylist() {
   //currentUser.email.split('@')[0]
-    
-    
-  const{currentUser} = useAuth()
-    const [username, setUsername] = useState([]);
-    const [recentPlaylists, setRecentPlaylists] = useState([]);
-
-    
-
-      
+  
+  const { currentUser } = useAuth()
+  const [username, setUsername] = useState([]);
+  const [recentPlaylists, setRecentPlaylists] = useState([]);
+  const [playlistTitles, setPlaylistTitles] = useState([]);
+  const [playlistCount, setPlaylistCount] = useState([]);
+  const [oldTitle, setOldTitle] = useState([]);
 
 
-   
-
-
-    const viewPlaylists = async () => {
-      
-      fetch("http://localhost:9000/playlist/privatePlaylists?email="+currentUser.email, {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json" }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setRecentPlaylists(data);
-          console.log(JSON.stringify(data));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-      
-
+  const viewPlaylists = async () => {
   
 
-  
-    
-    
-    const createPlaylist = async () => {
-      if(title!="" && song!="")
-      {
-        let pub;
-        if(ispublic==true)
-        {
-          pub=1;
-        }
-        else
-        {
-          pub=0;
-        }
-
-      fetch("http://localhost:9000/playlist/emailusername?name1="+currentUser.email, {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json" }),
-      })
-        .then((res) => res.json())
-        .then((data2) => {
-          setUsername(data2);
-          console.log(JSON.stringify(data2));
-
-
-          console.log("Entered")
-          fetch("http://" + window.location.hostname + ':9000/playlist/playlist', {method: "POST", body: JSON.stringify({"title": title, "songs": song, "username": data2[0].username, "email":currentUser.email, "public":pub}), headers: new Headers({'Content-Type': 'application/json'})})
-          .then(res => res.json())
-          .then(data => {
-              
-          })
-          .catch(err => {
-              console.log(err)
-          })
-
-
-
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-      }
-
-  };
-
-  const editPlaylist = async () => {
-    let pub;
-    if(title2!="" && song2!="")
-    {
-      if(ispublic2==true)
-      {
-        pub=1;
-      }
-      else
-      {
-        pub=0;
-      }
-
-    fetch("http://localhost:9000/playlist/emailusername?name1="+currentUser.email, {
+    fetch("http://localhost:9000/playlist/privatePlaylists?email=" + currentUser.email, {
       method: "GET",
       headers: new Headers({ "Content-Type": "application/json" }),
     })
       .then((res) => res.json())
-      .then((data2) => {
-        setUsername(data2);
-        console.log(JSON.stringify(data2));
+      .then((data) => {
+        setRecentPlaylists(data);
+        console.log(JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-
-        console.log(ispublic2)
-        fetch("http://" + window.location.hostname + ':9000/playlist/editPlaylist', {method: "POST", body: JSON.stringify({"song": song2,"ispublic":pub, "title": title2, "email":currentUser.email}), headers: new Headers({'Content-Type': 'application/json'})})
-        .then(res => res.json())
-        .then(data => {
-            
-        })
-        .catch(err => {
-            console.log(err)
-        })
-
-
-
+  const createPlaylist2 = async () => {
+    
+     await fetch("http://localhost:9000/playlist/playlistNum?name=" + currentUser.email, {
+      method: "GET",
+      headers: new Headers({ "Content-Type": "application/json" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPlaylistCount(data);
+        console.log(JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err);
       });
 
-    }
-
-};
 
 
-let u=0;
-
-const deletePlaylist = async () => 
-{
-  u++
-  if(u==2)
-  {
-    fetch("http://" + window.location.hostname + ':9000/playlist/deletePlaylist', {method: "POST", body: JSON.stringify({"title": title3, "email":currentUser.email}), headers: new Headers({'Content-Type': 'application/json'})})
-    .then(res => res.json())
-    .then(data => {
-        
+  await fetch("http://localhost:9000/playlist/playlistNames?name=" + currentUser.email, {
+      method: "GET",
+      headers: new Headers({ "Content-Type": "application/json" }),
     })
-    .catch(err => {
-        console.log(err)
-    })
-    u=0;
+      .then((res) => res.json())
+      .then((data) => {
+        setPlaylistTitles(data);
+        console.log(JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
  
-  
-}
 
-const cancelDeletePlaylist = async () => 
-{
-  u=0;
-}
+ 
 
 
+  const createPlaylist = async () => {
+    createPlaylist2();
 
-const [title, setTitle] = useState('');
-const [title2, setTitle2] = useState('');
-const [title3, setTitle3] = useState('');
-const [song, setSong] = useState('');
-const [song2, setSong2] = useState('');
-const [ispublic, setIsPublic] = useState('');
-const [ispublic2, setIsPublic2] = useState('');
+    // var num = 
+    // console.log(num)
+    if(oldTitle!==title){
+    if (await playlistCount[0].num < 20) {
+      if ((playlistTitles).filter(y => y.title === title).length == 0) {
+        console.log(playlistTitles.filter(y => y.title === title))
+
+        if (title != "" && song != "") {
+          let pub;
+          if (ispublic == true) {
+            pub = 1;
+          }
+          else {
+            pub = 0;
+          }
+          setOldTitle(title)
+
+
+          fetch("http://localhost:9000/playlist/emailusername?name1=" + currentUser.email, {
+            method: "GET",
+            headers: new Headers({ "Content-Type": "application/json" }),
+          })
+            .then((res) => res.json())
+            .then((data2) => {
+              setUsername(data2);
+              console.log(JSON.stringify(data2));
+
+
+              console.log("Entered")
+              fetch("http://" + window.location.hostname + ':9000/playlist/playlist', { method: "POST", body: JSON.stringify({ "title": title, "songs": song, "username": data2[0].username, "email": currentUser.email, "public": pub }), headers: new Headers({ 'Content-Type': 'application/json' }) })
+                .then(res => res.json())
+                .then(data => {
+                  console.log(playlistTitles.filter(y => y.title === title).length)
+
+
+                })
+
+                
+                .catch(err => {
+                  console.log(err)
+                })
+
+                
+              
+
+
+
+                
+
+
+
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+
+        }
+      }
+
+    }
+  }
+
+
+  };
+
+  const playlistDescription = async () => {
+
+    fetch("http://" + window.location.hostname + ':9000/playlist/playlistDescription', { method: "POST", body: JSON.stringify({ "description": description, "title": title4, "email": currentUser.email }), headers: new Headers({ 'Content-Type': 'application/json' }) })
+    .then(res => res.json())
+    .then(data => {
+
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+
+
+
+
+  }
+
+
+
+
+  const editPlaylist = async () => {
+
+
+    fetch("http://localhost:9000/playlist/playlistNames?name=" + currentUser.email, {
+      method: "GET",
+      headers: new Headers({ "Content-Type": "application/json" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPlaylistTitles(data);
+        console.log(JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    var num = playlistTitles.filter(y => y.title === title)
+    if (num.length == 0) {
+
+      let pub;
+      if (title2 != "" && song2 != "") {
+        if (ispublic2 == true) {
+          pub = 1;
+        }
+        else {
+          pub = 0;
+        }
+
+        fetch("http://localhost:9000/playlist/emailusername?name1=" + currentUser.email, {
+          method: "GET",
+          headers: new Headers({ "Content-Type": "application/json" }),
+        })
+          .then((res) => res.json())
+          .then((data2) => {
+            setUsername(data2);
+            console.log(JSON.stringify(data2));
+
+
+            console.log(ispublic2)
+            fetch("http://" + window.location.hostname + ':9000/playlist/editPlaylist', { method: "POST", body: JSON.stringify({ "song": song2, "ispublic": pub, "title": title2, "email": currentUser.email }), headers: new Headers({ 'Content-Type': 'application/json' }) })
+              .then(res => res.json())
+              .then(data => {
+
+              })
+              .catch(err => {
+                console.log(err)
+              })
+
+
+
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+      }
+    }
+  };
+
+
+  let u = 0;
+
+  const deletePlaylist = async () => {
+    u++
+    if (u == 2) {
+      fetch("http://" + window.location.hostname + ':9000/playlist/deletePlaylist', { method: "POST", body: JSON.stringify({ "title": title3, "email": currentUser.email }), headers: new Headers({ 'Content-Type': 'application/json' }) })
+        .then(res => res.json())
+        .then(data => {
+
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      u = 0;
+    }
+
+
+  }
+
+  const cancelDeletePlaylist = async () => {
+    u = 0;
+  }
+
+
+
+
+
+  const [title, setTitle] = useState('');
+  const [title2, setTitle2] = useState('');
+  const [title3, setTitle3] = useState('');
+  const [title4, setTitle4] = useState('');
+  const [song, setSong] = useState('');
+  const [song2, setSong2] = useState('');
+  const [ispublic, setIsPublic] = useState('');
+  const [ispublic2, setIsPublic2] = useState('');
+  const [description, setDescription] = useState('');
+
+
+  function test2()
+  {
+    createPlaylist2();
+    createPlaylist()
+  }
 
 
 
 
   return (
     <div>
-        <div className = "createPlaylist" >
-        <button onClick={createPlaylist} className="cpbtn">Create Playlist</button>
-        <input type="text" placeholder="Enter Playlist Name" required value={title} onChange={(e) => setTitle(e.target.value)}/>  
-        <input type="checkbox" required checked={ispublic} onChange={(e) => setIsPublic(e.target.checked)}/>ispublic
+      <div className="createPlaylist" >
+        <button onClick={test2} className="cpbtn">Create Playlist</button>
+        <input type="text" placeholder="Enter Playlist Name" required value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input type="checkbox" required checked={ispublic} onChange={(e) => setIsPublic(e.target.checked)} />ispublic
         <br></br>
-        <input type="text" placeholder="Enter Songs" required value={song} onChange={(e) => setSong(e.target.value)}/>
-        </div>
-        
+        <input type="text" placeholder="Enter Songs" required value={song} onChange={(e) => setSong(e.target.value)} />
+      </div>
 
-        <Search/>
 
-        <div className="edit">
+      <Search />
+
+      <div className="edit">
         <button onClick={editPlaylist} className="ebtn">Edit Playlist</button>
-        <input type="text" placeholder="Enter Playlist Name to Edit" required value={title2} onChange={(e) => setTitle2(e.target.value)}/>  
-        <input type="text" placeholder="Songs" required value={song2} onChange={(e) => setSong2(e.target.value)}/>  
-        <input type="checkbox" required checked={ispublic2} onChange={(e) => setIsPublic2(e.target.checked)}/>ispublic
+        <input type="text" placeholder="Enter Playlist Name to Edit" required value={title2} onChange={(e) => setTitle2(e.target.value)} />
+        <input type="text" placeholder="Songs" required value={song2} onChange={(e) => setSong2(e.target.value)} />
+        <input type="checkbox" required checked={ispublic2} onChange={(e) => setIsPublic2(e.target.checked)} />ispublic
 
 
-        </div>
+      </div>
 
 
 
-        <div className="delete">
+      <div className="delete">
         <button onClick={deletePlaylist} className="ebtn">Delete Playlist</button>
         <button onClick={deletePlaylist} className="ebtn">Confirm Delete Playlist</button>
-        <button onClick={cancelDeletePlaylist} className="ebtn">Cancel Delete Playlist</button>
-        <input type="text" placeholder="Enter Playlist Name to Delete" required value={title3} onChange={(e) => setTitle3(e.target.value)}/>  
+        <button onClick={cancelDeletePlaylist} className="ebtn"> Cancel Delete Playlist</button>
+        <input type="text" placeholder="Enter Playlist Name to Delete" required value={title3} onChange={(e) => setTitle3(e.target.value)} />
+      </div>
+
+      <div className="description">
+        <button onClick={playlistDescription} className="ebtn">Add Description</button>
+        <input type="text" placeholder="Enter Playlist to Add desc" required value={title4} onChange={(e) => setTitle4(e.target.value)} />
+        <input type="text" placeholder="Enter Playlist Description" required value={description} onChange={(e) => setDescription(e.target.value)} />
+      </div>
+
+      <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
+
+
+
+
+
+      {recentPlaylists.length != 0 ? recentPlaylists.map((playlist) => (
+        <div>
+          <ul>
+            <li>
+              {" "}
+              {playlist.title + " by: " + playlist.username + " #tracks: " + playlist.song.split(",").length}{" "}
+
+
+            </li>
+
+          </ul>
+          <br></br>
         </div>
-
-        <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
-
-
-
-
-
-        {recentPlaylists.length != 0 ? recentPlaylists.map((playlist) => (
-            <div>
-              <ul>
-                <li>
-                  {" "}
-                  {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
-                  
-
-                </li>
-            
-              </ul>
-              <br></br>
-            </div>
-          )): null}
+      )) : null}
 
     </div>
   )
 }
+
+
+

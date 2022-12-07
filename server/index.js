@@ -10,12 +10,12 @@ app.use(cors());
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "root",
   database: "musicdb",
 });
 
 db.query(
-  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,email VARCHAR(45) NOT NULL,ispublic BOOLEAN NOT NULL,createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
+  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,email VARCHAR(45) NOT NULL,ispublic BOOLEAN NOT NULL,description VARCHAR(2000),createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
   (req, res) => {}
 );
 
@@ -32,6 +32,12 @@ db.query(
 db.query
 (
     "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    (req, res) => {}
+);
+
+db.query
+(
+    "CREATE TABLE reviews(playlist_title VARCHAR(200),playlist_id INT,username VARCHAR(200),review VARCHAR(1000),rating INT)",
     (req, res) => {}
 );
 

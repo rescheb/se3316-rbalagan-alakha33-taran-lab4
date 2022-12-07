@@ -94,6 +94,28 @@ router.post("/editPlaylist", (req, res) => {
   );
 });
 
+router.post("/playlistDescription", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query("UPDATE playlists SET description=? WHERE (title=? && email=?)",
+    [req.body.description, req.body.title, req.body.email],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
 
 router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
@@ -218,6 +240,34 @@ router.get("/emailusername", (req, res) => {
 router.get("/privatePlaylists", (req, res) => {
   let email=req.query.email
   db.query("SELECT * FROM playlists WHERE email="+"\'"+email+"\'"+" ORDER BY updatedAt DESC LIMIT 20",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+router.get("/playlistNames", (req, res) => {
+  let name=req.query.name
+  db.query("SELECT title FROM playlists WHERE email="+"\'"+name+"\'",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+router.get("/playlistNum", (req, res) => {
+  let name=req.query.name
+  db.query("SELECT COUNT(email) AS num FROM playlists WHERE email="+"\'"+name+"\'",
     (err, data) => {
       console.log(data);
       if (err != null) {
