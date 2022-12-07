@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link , useHistory} from 'react-router-dom'
+
  
 export default function Login() {
    const emailRef = useRef()
@@ -32,6 +33,7 @@ export default function Login() {
  
  return (
    <>
+   <h1 className = "text-center mb-4">Music Playlist Web App</h1>
    <h5 className = "text-center mb-4">Welcome to the application, once you log in you will be able to Search, Create, and Delete Playlists!</h5>
        <Card>
            <Card.Body>

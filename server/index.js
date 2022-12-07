@@ -29,10 +29,9 @@ db.query(
   (req, res) => {}
 );
 
-db.query
-(
-    "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    (req, res) => {}
+db.query(
+  "CREATE TABLE currentuser(username VARCHAR(200), time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+  (req, res) => {}
 );
 
 db.query
@@ -63,12 +62,6 @@ fs.createReadStream("raw_tracks.csv")
   .on("data", (data) => tracks.push(data))
   .on("end", () => {});
 
-
-
-
-
-
-  
 router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
