@@ -39,8 +39,10 @@ export default function Dashboard() {
             <strong>User Name: </strong>{(currentUser.email.split('@')[0])}
             <Link to="/AuthenticatedUser" className = "btn btn-primary w-100 mt-3">Authenticated User</Link>
             <Link to="/privateplaylist" className = "btn btn-primary w-100 mt-3">Private Playlist</Link>
-            <Link to="/privatedmca" className = "btn btn-primary w-100 mt-3">Private DMCA</Link>
-            <Link to="/playlist" className = "btn btn-primary w-100 mt-3">Playlist</Link>
+            <Link to="/dmcanotice" className = "btn btn-primary w-100 mt-3">Private DMCA</Link>
+            <Link to="/playlist" className = "btn btn-primary w-100 mt-3">Public Playlist</Link>
+            <Link to="/aup" className = "btn btn-primary w-100 mt-3">AUP</Link>
+            <Link to="/options" className = "btn btn-primary w-100 mt-3">Admin Options</Link>
 
             </Card.Body>
         </Card>

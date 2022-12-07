@@ -309,6 +309,21 @@ router.get("/Admin", (req, res) => {
   );
 });
 
+router.get("/AdminCheck", (req, res) => {
+  db.query(
+    "SELECT is_Admin FROM musicdb.userinfo WHERE email=?;", [req.query.email],
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
 
 
 

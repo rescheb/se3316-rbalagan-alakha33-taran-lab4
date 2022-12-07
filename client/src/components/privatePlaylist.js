@@ -175,6 +175,7 @@ const [ispublic2, setIsPublic2] = useState('');
 
   return (
     <div>
+        <strong><h1>Private Playlist</h1></strong>
         <div className = "createPlaylist" >
         <button onClick={createPlaylist} className="cpbtn">Create Playlist</button>
         <input type="text" placeholder="Enter Playlist Name" required value={title} onChange={(e) => setTitle(e.target.value)}/>  
