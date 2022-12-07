@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function Playlist() {
-  
+
   const [recentPlaylists, setRecentPlaylists] = useState([]);
   useEffect(() => {
     fetch("http://localhost:9000/playlist/recentPlaylists", {
@@ -52,15 +52,9 @@ export default function Playlist() {
               <li>
                 {" "}
                 {playlist.title +" by: " +playlist.username +" #tracks: " +playlist.song.split(",").length}{" "}
-                {/* {setSongs(playlist.song.split(","))} */}
 
               </li>
-              {/* <li> {playlist.title} </li>
-                      <li> {playlist.song} </li>
-                      <li> {playlist.username} </li>
-                      <li> {playlist.ispublic} </li>
-                      <li> {playlist.createdAt} </li>
-                      <li> {playlist.updatedAt} </li> */}
+             
             </ul>
             <br></br>
           </div>
@@ -68,5 +62,6 @@ export default function Playlist() {
         : null}
     </div>
   </div>
+    
   );
 }

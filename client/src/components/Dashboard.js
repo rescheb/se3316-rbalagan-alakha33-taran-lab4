@@ -40,6 +40,8 @@ export default function Dashboard() {
             <Link to="/AuthenticatedUser" className = "btn btn-primary w-100 mt-3">Authenticated User</Link>
             <Link to="/privateplaylist" className = "btn btn-primary w-100 mt-3">Private Playlist</Link>
             <Link to="/privatedmca" className = "btn btn-primary w-100 mt-3">Private DMCA</Link>
+            <Link to="/playlist" className = "btn btn-primary w-100 mt-3">Playlist</Link>
+
             </Card.Body>
         </Card>
         <div className = "w-100 text-center mt-2">
@@ -48,7 +50,6 @@ export default function Dashboard() {
         <div className = "w-100 text-center mt-2">
           <Link to = "/dmcanotice">DCMA Notice</Link>
        </div>
-        
        </div>
     </>
   )

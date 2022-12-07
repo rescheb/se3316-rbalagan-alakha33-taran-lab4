@@ -16,6 +16,7 @@ import DcmaNotice from "./PublicDmcaNotice";
 import PrivatePlaylist from "./PrivatePlaylist";
 import PublicDmca from "./PublicDmca";
 import DmcaNotice from "./PublicDmcaNotice";
+import Admin from "./Admin";
 
 //setting up the login functionality
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/frontend" component={Frontend} />
                 <Route path = "/publicdmca" component = {PublicDmca}/>
                 <Route path = "/privatePlaylist" component = {PrivatePlaylist}/>
+                <Route path = "/admin" component = {Admin}/>
               </Switch>
             </AuthProvider>
           </Router>
