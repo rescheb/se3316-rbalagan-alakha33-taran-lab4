@@ -17,3 +17,32 @@
 .searchBars {
   display: flex;
 }
+
+.privateSearch {
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #f1a7f1, #fad0c4);
+}
+
+.createPlaylist {
+  width: 50%;
+  float: right;
+}
+
+.edit {
+  width: 50%;
+  float: right;
+}
+
+.delete {
+  width: 50%;
+  float: right;
+}
+.description {
+  width: 50%;
+  float: right;
+}
+
+.reviews {
+  width: 50%;
+  float: right;
+}
