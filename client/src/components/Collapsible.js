@@ -32,7 +32,7 @@ function Collapsible(props) {
                   " #tracks: " +
                   playlist.song.split(",").length}
               </button>
-              {isOpen && <div className="content">other stuff</div>}
+              {isOpen && <div className="content">{"Tracks: "+playlist.song}<br></br>{"Description: "+playlist.description}</div>}
             </div>
           ))
         : null}
