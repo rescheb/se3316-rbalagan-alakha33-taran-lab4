@@ -36,7 +36,7 @@ export default function Dashboard() {
             <Card.Body>
             <h2 className = "text-center mb-4">Profile</h2>
             {error && <Alert variant = "danger">{error}</Alert>}
-            <strong>User Name: </strong>{(currentUser.email.split('@')[0])}
+          
             <Link to="/privateplaylist" className = "btn btn-primary w-100 mt-3">Private Playlist</Link>
             <Link to="/dmcanotice" className = "btn btn-primary w-100 mt-3">Public DMCA</Link>
             <Link to="/playlist" className = "btn btn-primary w-100 mt-3">Public Playlist</Link>
