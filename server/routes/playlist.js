@@ -138,6 +138,29 @@ router.post("/deletePlaylist", (req, res) => {
   );
 });
 
+router.post("/addreview", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query("INSERT INTO reviews (playlist_title, cusername, username, review, rating) VALUES(?, ?, ?, ?, ?)",
+    [req.body.title, req.body.cusername, req.body.username, req.body.review, req.body.rating],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",

@@ -36,7 +36,7 @@ db.query(
 
 db.query
 (
-    "CREATE TABLE reviews(playlist_title VARCHAR(200),playlist_id INT,username VARCHAR(200),review VARCHAR(1000),rating INT)",
+    "CREATE TABLE reviews(playlist_title VARCHAR(200),cusername VARCHAR(50),username VARCHAR(200),review VARCHAR(1000),rating INT, date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     (req, res) => {}
 );
 

@@ -30,7 +30,7 @@ export default function Dashboard() {
     }
   }
   return (
-    <>
+    <div>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
@@ -76,6 +76,8 @@ export default function Dashboard() {
           <Link to="/dmcanotice">DCMA Notice</Link>
         </div>
       </div>
-    </>
+    </div>
+    </div>
   );
 }
+
