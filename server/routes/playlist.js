@@ -6,7 +6,7 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -29,7 +29,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -52,7 +52,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -75,7 +75,7 @@ router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -97,7 +97,7 @@ router.post("/playlistDescription", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -120,7 +120,7 @@ router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -142,7 +142,7 @@ router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Yoyomama_123",
     database: "musicdb",
   });
 
@@ -187,7 +187,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "Yoyomama_123",
   database: "musicdb",
 });
 
@@ -215,6 +215,64 @@ router.get("/currentuser1", (req, res) => {
     }
   );
 });
+
+
+router.get("/getdmca", (req, res) => {
+  db.query(
+    "SELECT value FROM dmca ORDER BY updated_At DESC LIMIT 1",
+    (err, data) => {
+      console.log(data);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.post("/postdmca", (req, res) => {
+  const db = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Yoyomama_123",
+    database: "musicdb",
+  });
+
+  console.log(req.body);
+  db.query(
+    "INSERT INTO dmca (value) VALUES (?);",
+    [
+      req.body.value
+    ],
+    (err, data) => {
+      console.log(err);
+      if (err != null) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
+
+
+
+
+
+
 
 router.get("/emailusername", (req, res) => {
   let h=req.query.name1

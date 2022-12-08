@@ -10,7 +10,7 @@ app.use(cors());
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "Yoyomama_123",
   database: "musicdb",
 });
 
@@ -40,6 +40,12 @@ db.query
     (req, res) => {}
 );
 
+db.query
+(
+    "CREATE TABLE dmca(value VARCHAR(5000), updated_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    (req, res) => {}
+);
+
 
 // let tracks = [];
 // fetch("http://localhost:9000/playlist/trackinfo", {
@@ -65,6 +71,18 @@ fs.createReadStream("raw_tracks.csv")
 router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
+
+
+
+db.query
+(
+    "INSERT INTO dmca (value) VALUES (\"TEST\");",
+    (req, res) => {}
+);
+
+
+
+
 
 // for(let g=0;g<tracks.length;g++)
 // {
