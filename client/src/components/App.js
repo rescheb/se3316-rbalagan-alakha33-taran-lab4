@@ -11,7 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UnauthenticatedUser from "./UnauthenticatedUser";
 import Frontend from "./Frontend";
-import AuthenticatedUser from "./AuthenticatedUser";
+
 import DcmaNotice from "./PublicDmcaNotice";
 import PrivatePlaylist from "./PrivatePlaylist";
 import PublicDmca from "./PublicDmca";
@@ -21,6 +21,7 @@ import Aup from "./Aup";
 import AdminRoute from "./AdminRoute";
 import PrivateDmca from "./PrivateDmca";
 import Options from "./Options";
+import Documentation from "./Documentation";
 
 //setting up the login functionality
 function App() {
@@ -32,17 +33,12 @@ function App() {
             <AuthProvider>
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
-                <PrivateRoute
-                  path="/AuthenticatedUser"
-                  component={AuthenticatedUser}
-                />
+                <PrivateRoute path="/documentation" component={Documentation} />
+             
                 <PrivateRoute path="/privatePlaylist" component={PrivatePlaylist} />
                 {/* <PrivateRoute path="/dmca" component={DmcaNotice} /> */}
                 <Route path="/dmcanotice" component={PrivateDmca} />
-                <PrivateRoute
-                  path="/AuthenticatedUser"
-                  component={AuthenticatedUser}
-                />
+               
                 {/* <Route path = "/dmcanotice" component = {PublicDmca}/> */}
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
