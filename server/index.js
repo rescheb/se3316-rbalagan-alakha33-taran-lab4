@@ -10,7 +10,7 @@ app.use(cors());
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "aarish123",
   database: "musicdb",
 });
 
@@ -34,18 +34,15 @@ db.query(
   (req, res) => {}
 );
 
-db.query
-(
-    "CREATE TABLE reviews(playlist_title VARCHAR(200),cusername VARCHAR(50),username VARCHAR(200),review VARCHAR(1000),rating INT, date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    (req, res) => {}
+db.query(
+  "CREATE TABLE reviews(playlist_title VARCHAR(200),cusername VARCHAR(50),username VARCHAR(200),review VARCHAR(1000),rating INT, date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+  (req, res) => {}
 );
 
-db.query
-(
-    "CREATE TABLE dmca(value VARCHAR(5000), updated_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    (req, res) => {}
+db.query(
+  "CREATE TABLE dmca(value VARCHAR(5000), updated_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+  (req, res) => {}
 );
-
 
 // let tracks = [];
 // fetch("http://localhost:9000/playlist/trackinfo", {
@@ -72,17 +69,7 @@ router.get("/trackinfo", (req, res) => {
   res.send(tracks);
 });
 
-
-
-db.query
-(
-    "INSERT INTO dmca (value) VALUES (\"TEST\");",
-    (req, res) => {}
-);
-
-
-
-
+db.query('INSERT INTO dmca (value) VALUES ("TEST");', (req, res) => {});
 
 // for(let g=0;g<tracks.length;g++)
 // {

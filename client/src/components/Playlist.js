@@ -44,11 +44,11 @@ export default function Playlist() {
     <div className="playlist">
       <h1>Public Playlist</h1>
       <div className="leftSearch">
+        <h2>Search Songs by Title, genre and artist</h2>
         <Search />
-        <br></br>
       </div>
       <div className="playlistSearch">
-        <br></br>
+        <h2>View Public Playlist</h2>
         <Collapsible />
       </div>
     </div>
