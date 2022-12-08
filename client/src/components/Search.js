@@ -65,45 +65,48 @@ export default function Search() {
 
   return (
     <div>
-      <div className="searchTrackTitle">
-        <button onClick={handleClickTrackTitle} className="tbtn">
-          Search Title
-        </button>
-        <input
-          type="text"
-          placeholder="Enter track title"
-          required
-          value={trackTitle}
-          onChange={(e) => setTrackTitle(e.target.value)}
-        />
+      <div className="searchBars">
+        <br></br>
+        <div className="searchTrackTitle">
+          <input
+            type="text"
+            placeholder="Enter track title"
+            required
+            value={trackTitle}
+            onChange={(e) => setTrackTitle(e.target.value)}
+          />
+          <button onClick={handleClickTrackTitle} className="tbtn">
+            Search Title
+          </button>
+        </div>
+        <br></br>
+        <div className="searchGenre">
+          <input
+            type="text"
+            placeholder="Enter genre"
+            required
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+          />
+          <button onClick={handleClickgenre} className="gbtn">
+            Search genre
+          </button>
+        </div>
+        <br></br>
+        <div className="searchArtist">
+          <input
+            type="text"
+            placeholder="Enter Artist Name"
+            required
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+          />
+          <button onClick={handleClickArtistTitle} className="abtn">
+            Search Artist
+          </button>
+        </div>
       </div>
-
-      <div className="searchGenre">
-        <button onClick={handleClickgenre} className="gbtn">
-          Search genre
-        </button>
-        <input
-          type="text"
-          placeholder="Enter genre"
-          required
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-        />
-      </div>
-
-      <div className="searchArtist">
-        <button onClick={handleClickArtistTitle} className="abtn">
-          Search Artist
-        </button>
-        <input
-          type="text"
-          placeholder="Enter Artist Name"
-          required
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
-        />
-      </div>
-
+      <br></br>
       {results.length != 0
         ? results.map((songs) => (
             <div>

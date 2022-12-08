@@ -6,14 +6,20 @@ router.post("/playlist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
   db.query(
     "INSERT INTO playlists (title, song, username, email, ispublic) VALUES (?, ?, ?, ?, ?);",
-    [req.body.title, req.body.songs, req.body.username, req.body.email, req.body.public],
+    [
+      req.body.title,
+      req.body.songs,
+      req.body.username,
+      req.body.email,
+      req.body.public,
+    ],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -29,7 +35,7 @@ router.post("/logininfo", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -52,7 +58,7 @@ router.post("/currentuser", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -75,12 +81,13 @@ router.post("/editPlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
+  db.query(
+    "UPDATE playlists SET song=?, updatedAt= NOW(), ispublic=? WHERE (title=? && email=?)",
     [req.body.song, req.body.ispublic, req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -97,12 +104,13 @@ router.post("/playlistDescription", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("UPDATE playlists SET description=? WHERE (title=? && email=?)",
+  db.query(
+    "UPDATE playlists SET description=? WHERE (title=? && email=?)",
     [req.body.description, req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -115,17 +123,17 @@ router.post("/playlistDescription", (req, res) => {
   );
 });
 
-
 router.post("/deletePlaylist", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("DELETE FROM playlists WHERE (title =? && email=?)",
+  db.query(
+    "DELETE FROM playlists WHERE (title =? && email=?)",
     [req.body.title, req.body.email],
     (err, data) => {
       console.log(err);
@@ -142,13 +150,20 @@ router.post("/addreview", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "aarish123",
     database: "musicdb",
   });
 
   console.log(req.body);
-  db.query("INSERT INTO reviews (playlist_title, cusername, username, review, rating) VALUES(?, ?, ?, ?, ?)",
-    [req.body.title, req.body.cusername, req.body.username, req.body.review, req.body.rating],
+  db.query(
+    "INSERT INTO reviews (playlist_title, cusername, username, review, rating) VALUES(?, ?, ?, ?, ?)",
+    [
+      req.body.title,
+      req.body.cusername,
+      req.body.username,
+      req.body.review,
+      req.body.rating,
+    ],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -160,12 +175,11 @@ router.post("/addreview", (req, res) => {
   );
 });
 
-
 router.post("/parsedData", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
@@ -210,7 +224,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "aarish123",
   database: "musicdb",
 });
 
@@ -239,7 +253,6 @@ router.get("/currentuser1", (req, res) => {
   );
 });
 
-
 router.get("/getdmca", (req, res) => {
   db.query(
     "SELECT value FROM dmca ORDER BY updated_At DESC LIMIT 1",
@@ -254,18 +267,6 @@ router.get("/getdmca", (req, res) => {
   );
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 router.post("/postdmca", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
@@ -277,9 +278,7 @@ router.post("/postdmca", (req, res) => {
   console.log(req.body);
   db.query(
     "INSERT INTO dmca (value) VALUES (?);",
-    [
-      req.body.value
-    ],
+    [req.body.value],
     (err, data) => {
       console.log(err);
       if (err != null) {
@@ -291,27 +290,29 @@ router.post("/postdmca", (req, res) => {
   );
 });
 
-
-
-
-
-
-
 router.get("/emailusername", (req, res) => {
-  let h=req.query.name1
-  db.query("SELECT username FROM userinfo WHERE email="+"\'"+h+"\'", (err, data) => {
+  let h = req.query.name1;
+  db.query(
+    "SELECT username FROM userinfo WHERE email=" + "'" + h + "'",
+    (err, data) => {
       console.log(data);
       if (err != null) {
         res.json(err);
       } else {
         res.json(data);
       }
-  });
+    }
+  );
 });
 
 router.get("/privatePlaylists", (req, res) => {
-  let email=req.query.email
-  db.query("SELECT * FROM playlists WHERE email="+"\'"+email+"\'"+" ORDER BY updatedAt DESC LIMIT 20",
+  let email = req.query.email;
+  db.query(
+    "SELECT * FROM playlists WHERE email=" +
+      "'" +
+      email +
+      "'" +
+      " ORDER BY updatedAt DESC LIMIT 20",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -324,8 +325,9 @@ router.get("/privatePlaylists", (req, res) => {
 });
 
 router.get("/playlistNames", (req, res) => {
-  let name=req.query.name
-  db.query("SELECT title FROM playlists WHERE email="+"\'"+name+"\'",
+  let name = req.query.name;
+  db.query(
+    "SELECT title FROM playlists WHERE email=" + "'" + name + "'",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -338,8 +340,9 @@ router.get("/playlistNames", (req, res) => {
 });
 
 router.get("/playlistNum", (req, res) => {
-  let name=req.query.name
-  db.query("SELECT COUNT(email) AS num FROM playlists WHERE email="+"\'"+name+"\'",
+  let name = req.query.name;
+  db.query(
+    "SELECT COUNT(email) AS num FROM playlists WHERE email=" + "'" + name + "'",
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -350,12 +353,6 @@ router.get("/playlistNum", (req, res) => {
     }
   );
 });
-
-
-
-
-
-
 
 router.get("/username", (req, res) => {
   db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
@@ -442,7 +439,8 @@ router.get("/Admin", (req, res) => {
 
 router.get("/AdminCheck", (req, res) => {
   db.query(
-    "SELECT is_Admin FROM musicdb.userinfo WHERE email=?;", [req.query.email],
+    "SELECT is_Admin FROM musicdb.userinfo WHERE email=?;",
+    [req.query.email],
     (err, data) => {
       console.log(data);
       if (err != null) {
@@ -453,11 +451,5 @@ router.get("/AdminCheck", (req, res) => {
     }
   );
 });
-
-
-
-
-
-
 
 module.exports = router;

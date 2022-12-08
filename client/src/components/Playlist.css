@@ -1,11 +1,19 @@
 .leftSearch {
-  background-color: aqua;
   width: 50%;
   float: left;
 }
 
 .playlistSearch {
-  background-color: bisque;
   width: 50%;
   float: right;
+}
+
+.playlist {
+  float: right;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #f1a7f1, #fad0c4);
+}
+
+.searchBars {
+  display: flex;
 }

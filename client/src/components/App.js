@@ -25,12 +25,9 @@ import Options from "./Options";
 //setting up the login functionality
 function App() {
   return (
-    <div>
-      <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "100vh" }}
-      >
-        <div className="w-100" style={{ maxWidth: "10000px" }}>
+    <div className="main" style={{ maxWidth: "10000px" }}>
+      <Container className="d-flex align-items-center justify-content-center">
+        <div className="w-100">
           <Router>
             <AuthProvider>
               <Switch>
