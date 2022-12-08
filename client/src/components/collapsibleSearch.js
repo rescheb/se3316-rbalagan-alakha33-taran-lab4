@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+//fetch recent recent playlist from the backend server
 function collapsibleSearch(props) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,6 +20,7 @@ function collapsibleSearch(props) {
       });
   }, []);
 
+  //providing structure to the collapsible search
   return (
     <div>
       {recentPlaylists.length != 0
