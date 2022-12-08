@@ -1,43 +1,38 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState } from "react";
-import { useRef } from 'react'
-import { useAuth } from '../contexts/AuthContext'
+import { useRef } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function CollapsiblepPlaylist() {
+  const [recentPlaylists, setRecentPlaylists] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const [recentPlaylists, setRecentPlaylists] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
+  const { currentUser } = useAuth();
 
-    const { currentUser } = useAuth()
-
-
-
-
-    const viewPlaylists = async () => {
-
-
-        fetch("http://localhost:9000/playlist/privatePlaylists?email=" + currentUser.email, {
-          method: "GET",
-          headers: new Headers({ "Content-Type": "application/json" }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            setRecentPlaylists(data);
-            console.log(JSON.stringify(data));
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+  const viewPlaylists = async () => {
+    fetch(
+      "http://localhost:9000/playlist/privatePlaylists?email=" +
+        currentUser.email,
+      {
+        method: "GET",
+        headers: new Headers({ "Content-Type": "application/json" }),
       }
-    
-
-
-
-
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentPlaylists(data);
+        console.log(JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
-    <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
+      <button onClick={viewPlaylists} className="vbtn">
+        View Saved Playlist
+      </button>
       {recentPlaylists.length != 0
         ? recentPlaylists.map((playlist) => (
             <div className="playlistSearch">
@@ -49,10 +44,16 @@ export default function CollapsiblepPlaylist() {
                   " #tracks: " +
                   playlist.song.split(",").length}
               </button>
-              {isOpen && <div className="content">{"Tracks: "+playlist.song}<br></br>{"Description: "+playlist.description}</div>}
+              {isOpen && (
+                <div className="content">
+                  {"Tracks: " + playlist.song}
+                  <br></br>
+                  {"Description: " + playlist.description}
+                </div>
+              )}
             </div>
           ))
         : null}
     </div>
-  )
+  );
 }
