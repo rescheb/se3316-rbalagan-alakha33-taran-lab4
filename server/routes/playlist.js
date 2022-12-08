@@ -271,7 +271,7 @@ router.post("/postdmca", (req, res) => {
   const db = sql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Yoyomama_123",
+    password: "aarish123",
     database: "musicdb",
   });
 
