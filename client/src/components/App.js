@@ -55,9 +55,6 @@ function App() {
                 <Route path="/publicdmca" component={PublicDmca} />
                 <Route path="/privatePlaylist" component={PrivatePlaylist} />
                 <Route path="/admin" component={Admin} />
-                <Route path="/publicdmca" component={PublicDmca} />
-                <Route path="/privatePlaylist" component={PrivatePlaylist} />
-                <Route path="/admin" component={Admin} />
                 <Route path="/aup" component={Aup} />
                 <Route path="/options" component={Options} />
                 {/* <Route path = "privateDmca" ><AdminRoute/></Route> */}

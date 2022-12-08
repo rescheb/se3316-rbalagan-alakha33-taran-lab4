@@ -59,7 +59,7 @@ export default function Login() {
            Need an Account? <Link to = "/signup">Sign Up</Link>
        </div>
        <div className = "w-100 text-center mt-2">
-           Dont have an Account? <Link to = "/UnauthenticatedUser">Continue without Account</Link>
+           Dont have an Account? <Link to = "/playlist">Continue without Account</Link>
        </div>
        
    </>
