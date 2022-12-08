@@ -118,6 +118,11 @@ export default function Search() {
                 <div className="content">
                   <li>{songs.track_genres.split("'")[7]}</li>
                   <li>{songs.track_duration}</li>
+                  <li>
+                    <a href={"https://www.youtube.com/results?search_query="+songs.track_title} target="_blank">View song on Youtube</a>
+                  </li>
+
+
                 </div>
               )}
             </div>
