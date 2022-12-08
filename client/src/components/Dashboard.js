@@ -29,6 +29,7 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
+  //listing links of different routes on the dashboard only to be accessed by signin in user
   return (
     <div>
     

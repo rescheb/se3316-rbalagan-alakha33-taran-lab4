@@ -1,6 +1,6 @@
 import React from "react";
 import "./Playlist.css";
-
+//defining variables to be used in the form
 export default function Form() {
   const [formData, setFormData] = React.useState({
     userTrack: "",
@@ -25,7 +25,7 @@ export default function Form() {
     // submitToApi(formData)
     console.log(formData);
   }
-
+//form for the user to search by track, artist name, album name and genre name
   return (
     <form onSubmit={handleSubmit}>
       <input

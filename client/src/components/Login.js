@@ -3,7 +3,7 @@ import {Form, Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link , useHistory} from 'react-router-dom'
 
- 
+ //defining variables for the login page
 export default function Login() {
    const emailRef = useRef()
    const passwordRef = useRef()
@@ -30,7 +30,8 @@ export default function Login() {
        setLoading(false)
    }
  
- 
+ //space for the user to insert their credentials-login and password
+ //providing sturture to the login page
  return (
    <>
    <h1 className = "text-center mb-4">Music Playlist Web App</h1>

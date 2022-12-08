@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
-
+//defining forget password functionality incase the user forgets its credentials
+//connected to firebase
 export default function ForgotPassword() {
   const emailRef = useRef();
   const { resetPassword } = useAuth();
@@ -24,7 +25,7 @@ export default function ForgotPassword() {
 
     setLoading(false);
   }
-
+//gicing struture to the forget password page with options like password reset
   return (
     <>
       <Card>

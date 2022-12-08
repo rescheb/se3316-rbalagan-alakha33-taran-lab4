@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link , useHistory} from 'react-router-dom'
-
+//page fpr admin to access and direct
 export default function Options() {
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -12,6 +12,7 @@ export default function Options() {
     const [error,setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
+  
   return (
     <div>
         <Card>
