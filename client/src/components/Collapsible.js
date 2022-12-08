@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+//setting collapsible for listing tracks
+//using fetch command to get recent playlist from the back end server
 function Collapsible(props) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,7 +19,7 @@ function Collapsible(props) {
         console.log(err);
       });
   }, []);
-
+  //adding the reaction of collapsible onclick and information it would display
   return (
     <div>
       {recentPlaylists.length != 0
@@ -32,7 +33,13 @@ function Collapsible(props) {
                   " #tracks: " +
                   playlist.song.split(",").length}
               </button>
-              {isOpen && <div className="content">{"Tracks: "+playlist.song}<br></br>{"Description: "+playlist.description}</div>}
+              {isOpen && (
+                <div className="content">
+                  {"Tracks: " + playlist.song}
+                  <br></br>
+                  {"Description: " + playlist.description}
+                </div>
+              )}
             </div>
           ))
         : null}

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
+//setting collapsible to list and playlist in details
+//fetch command used to get private playlist from the back end senver
 export default function CollapsiblepPlaylist() {
   const [recentPlaylists, setRecentPlaylists] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +30,7 @@ export default function CollapsiblepPlaylist() {
       });
   };
 
+  //providing structure to the collpaisble of the private playlist
   return (
     <div>
       <button onClick={viewPlaylists} className="vbtn">

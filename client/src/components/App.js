@@ -23,8 +23,10 @@ import PrivateDmca from "./PrivateDmca";
 import Options from "./Options";
 
 //setting up the login functionality
+
 function App() {
   return (
+    //assigning divs and setting routing path
     <div className="main" style={{ maxWidth: "10000px" }}>
       <Container className="d-flex align-items-center justify-content-center">
         <div className="w-100">
