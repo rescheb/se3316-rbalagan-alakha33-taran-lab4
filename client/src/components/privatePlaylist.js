@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRef } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import Search from "./Search";
+import CollapsiblepPlaylist from "./CollapsiblepPlaylist";
+
 const name = require('./SignUp.js');
 
 
@@ -384,7 +386,9 @@ export default function PrivatePlaylist() {
 
       </div>
 
-      <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
+      <CollapsiblepPlaylist/>
+
+      {/* <button onClick={viewPlaylists} className="vbtn">View Playlist</button>
 
 
 
@@ -403,7 +407,7 @@ export default function PrivatePlaylist() {
           </ul>
           <br></br>
         </div>
-      )) : null}
+      )) : null} */}
 
     </div>
   )

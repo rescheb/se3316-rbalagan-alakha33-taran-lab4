@@ -10,7 +10,7 @@ app.use(cors());
 const db = sql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Yoyomama_123",
+  password: "root",
   database: "musicdb",
 });
 
