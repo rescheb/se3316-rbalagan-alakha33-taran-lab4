@@ -7,7 +7,7 @@ router.post("/playlist", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -36,7 +36,7 @@ router.post("/logininfo", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -59,7 +59,7 @@ router.post("/currentuser", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -82,7 +82,7 @@ router.post("/editPlaylist", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -105,7 +105,7 @@ router.post("/playlistDescription", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -128,7 +128,7 @@ router.post("/deletePlaylist", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -151,7 +151,7 @@ router.post("/addreview", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -180,7 +180,7 @@ router.post("/parsedData", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
@@ -225,7 +225,7 @@ const db = sql.createConnection({
   host: "localhost",
   user: "root",
   password: "aarish123",
-  database: "musicdb",
+  database: "root",
 });
 
 router.get("/numuser", (req, res) => {
@@ -272,7 +272,7 @@ router.post("/postdmca", (req, res) => {
     host: "localhost",
     user: "root",
     password: "aarish123",
-    database: "musicdb",
+    database: "root",
   });
 
   console.log(req.body);
