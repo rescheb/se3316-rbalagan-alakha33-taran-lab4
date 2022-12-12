@@ -11,7 +11,7 @@ const db = sql.createConnection({
   host: "localhost",
   user: "root",
   password: "aarish123",
-  database: "musicdb",
+  database: "root",
 });
 
 db.query(
