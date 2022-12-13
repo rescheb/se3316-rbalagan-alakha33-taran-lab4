@@ -1,5 +1,5 @@
 const express = require("express");
-var mariadb = require('mariadb');
+//var mariadb = require('mariadb');
 const router = express.Router();
 const sql = require("mysql2");
 
@@ -7,8 +7,8 @@ router.post("/playlist", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -45,8 +45,8 @@ router.post("/logininfo", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -77,8 +77,8 @@ router.post("/currentuser", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -109,8 +109,8 @@ router.post("/editPlaylist", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -141,8 +141,8 @@ router.post("/playlistDescription", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -173,8 +173,8 @@ router.post("/deletePlaylist", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -205,8 +205,8 @@ router.post("/addreview", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
 
@@ -244,8 +244,8 @@ router.post("/parsedData", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 
@@ -298,8 +298,8 @@ router.get("/recentPlaylists", (req, res) => {
 // const db = sql.createConnection({
 //   host: "localhost",
 //   user: "root",
-//   password: "aarish123",
-//   database: "root",
+//   password: "Yoyomama_123",
+//   database: "musicdb",
 // });
 
 const db = 
@@ -354,8 +354,8 @@ router.post("/postdmca", (req, res) => {
   // const db = sql.createConnection({
   //   host: "localhost",
   //   user: "root",
-  //   password: "aarish123",
-  //   database: "root",
+  //   password: "Yoyomama_123",
+  //   database: "musicdb",
   // });
 
   const db = 

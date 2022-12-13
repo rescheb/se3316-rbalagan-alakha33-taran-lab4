@@ -10,13 +10,13 @@ app.use(cors());
 // const db = sql.createConnection({
 //   host: "localhost",
 //   user: "root",
-//   password: "aarish123",
-//   database: "root",
+//   password: "Yoyomama_123",
+//   database: "musicdb",
 // });
 
 const mariadb = require('mariadb');
 
-// Create a connection pool
+//Create a connection pool
 const db = 
   mariadb.createPool({
     host: "localhost", 
@@ -27,7 +27,7 @@ const db =
   });
 
 db.query(
-  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,email VARCHAR(45) NOT NULL,ispublic BOOLEAN NOT NULL,description VARCHAR(2000),createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
+  "CREATE TABLE playlists (id INT NOT NULL AUTO_INCREMENT,title VARCHAR(45) NOT NULL,song VARCHAR(45) NOT NULL,username VARCHAR(45) NOT NULL,email VARCHAR(45) NOT NULL,ispublic BOOLEAN NOT NULL,description VARCHAR(2000),createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (id));",
   (req, res) => {}
 );
 
