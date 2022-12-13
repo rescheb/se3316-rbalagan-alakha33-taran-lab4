@@ -1,5 +1,5 @@
 const express = require("express");
-//var mariadb = require('mariadb');
+var mariadb = require('mariadb');
 const router = express.Router();
 const sql = require("mysql2");
 
