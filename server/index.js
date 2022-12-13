@@ -20,7 +20,7 @@ const mariadb = require('mariadb');
 const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"

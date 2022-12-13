@@ -14,7 +14,7 @@ router.post("/playlist", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -52,7 +52,7 @@ router.post("/logininfo", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -84,7 +84,7 @@ router.post("/currentuser", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -116,7 +116,7 @@ router.post("/editPlaylist", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -148,7 +148,7 @@ router.post("/playlistDescription", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -180,7 +180,7 @@ router.post("/deletePlaylist", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -213,7 +213,7 @@ router.post("/addreview", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -251,7 +251,7 @@ router.post("/parsedData", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -305,7 +305,7 @@ router.get("/recentPlaylists", (req, res) => {
 const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
@@ -361,7 +361,7 @@ router.post("/postdmca", (req, res) => {
   const db = 
   mariadb.createPool({
     host: "localhost", 
-    port: 9000,
+    port: 3306,
     user: "app_user", 
     password: "Password123!",
     database: "todo"
