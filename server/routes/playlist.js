@@ -1,13 +1,23 @@
 const express = require("express");
+var mariadb = require('mariadb');
 const router = express.Router();
 const sql = require("mysql2");
 
 router.post("/playlist", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -32,11 +42,20 @@ router.post("/playlist", (req, res) => {
 });
 
 router.post("/logininfo", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -55,11 +74,20 @@ router.post("/logininfo", (req, res) => {
 });
 
 router.post("/currentuser", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -78,11 +106,20 @@ router.post("/currentuser", (req, res) => {
 });
 
 router.post("/editPlaylist", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -101,11 +138,20 @@ router.post("/editPlaylist", (req, res) => {
 });
 
 router.post("/playlistDescription", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -124,11 +170,20 @@ router.post("/playlistDescription", (req, res) => {
 });
 
 router.post("/deletePlaylist", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -147,11 +202,21 @@ router.post("/deletePlaylist", (req, res) => {
 });
 
 router.post("/addreview", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -176,11 +241,20 @@ router.post("/addreview", (req, res) => {
 });
 
 router.post("/parsedData", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
@@ -221,12 +295,21 @@ router.get("/recentPlaylists", (req, res) => {
   );
 });
 
-const db = sql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "aarish123",
-  database: "root",
-});
+// const db = sql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "aarish123",
+//   database: "root",
+// });
+
+const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
+  });
 
 router.get("/numuser", (req, res) => {
   db.query("SELECT COUNT(email) FROM userinfo", (err, data) => {
@@ -268,11 +351,20 @@ router.get("/getdmca", (req, res) => {
 });
 
 router.post("/postdmca", (req, res) => {
-  const db = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aarish123",
-    database: "root",
+  // const db = sql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "aarish123",
+  //   database: "root",
+  // });
+
+  const db = 
+  mariadb.createPool({
+    host: "localhost", 
+    port: 9000,
+    user: "app_user", 
+    password: "Password123!",
+    database: "todo"
   });
 
   console.log(req.body);
